@@ -14,3 +14,13 @@ yarn-error.log
 storage/logs
 storage/app/img/
 
+/bower_components
+
+public/storage
+public/views
+public/js
+public/fonts
+public/css
+public/build
+public/locales
+_ide_helper.php
