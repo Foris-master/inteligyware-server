@@ -11,7 +11,8 @@ class Client extends Model
     use RestTrait;
 
 
-    protected $fillable = ['name','phone','email','patner_id','type'];
+    private static $Types=['standard','vip'];
+    protected $fillable = ['name','phone_number','email','patner_id','type'];
 
     protected $dates = ['created_at','updated_at'];
 

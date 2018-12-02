@@ -21,9 +21,6 @@ class CreatePaymentsTable extends Migration
             $table->string('proof');
             $table->dateTime('payment_date');
 
-            $table->integer('payment_method_id')->unsigned()->index()->nullable();
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('set null');
-
             $table->string('pdf');
             $table->integer('currency_id')->unsigned()->index();
             $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');

@@ -11,7 +11,7 @@ $factory->define(App\Client::class, function (Faker $faker) {
         //
         'name'=>$faker->name,
         'email'=>$faker->email,
-        'phone'=>$faker->phoneNumber,
+        'phone_number'=>$faker->phoneNumber,
         'type'=>$t,
         'patner_id'=>$p,
     ];

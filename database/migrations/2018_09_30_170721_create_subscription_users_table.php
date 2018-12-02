@@ -29,9 +29,6 @@ class CreateSubscriptionUsersTable extends Migration
             $table->integer('subscription_id')->unsigned()->index();
             $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
 
-            $table->integer('payment_method_id')->unsigned()->index()->nullable();
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('set null');
-
             $table->unique(array('subscription_id', 'patner_id'));
             $table->timestamps();
         });

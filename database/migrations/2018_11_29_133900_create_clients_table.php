@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone_number',15);
             $table->string('type',10)->default('standard');
             $table->integer('patner_id')->unsigned()->index()->nullable();
             $table->foreign('patner_id')->references('id')->on('patners')->onDelete('set null');
