@@ -1,0 +1,162 @@
+[
+  {
+    "display_name" : "Super Administrator",
+    "description" : "Super Administrator",
+    "name" : "super.administrator",
+    "permissions":[
+      "add.offer",
+      "edit.offer",
+      "delete.offer",
+      "consult.offer",
+
+      "add.phone_number",
+      "edit.phone_number",
+      "delete.phone_number",
+      "consult.phone_number",
+
+      "add.match",
+      "edit.match",
+      "delete.match",
+      "consult.match",
+
+      "add.town",
+      "edit.town",
+      "delete.town",
+      "consult.town",
+
+      "add.user",
+      "edit.user",
+      "delete.user",
+      "consult.user",
+
+      "add.role",
+      "edit.role",
+      "delete.role",
+      "consult.role",
+
+      "add.permission",
+      "edit.permission",
+      "delete.permission",
+      "consult.permission",
+
+      "valid.ticket",
+
+      "consult.stat",
+
+      "add.cash.ticket"
+    ]
+  },
+  {
+    "display_name" : "Administrator",
+    "description" : "tous les rôles des fonctions du menu Administration",
+    "name" : "administrator",
+    "permissions":[
+      "add.offer",
+      "edit.offer",
+      "delete.offer",
+      "consult.offer",
+
+      "add.phone_number",
+      "edit.phone_number",
+      "delete.phone_number",
+      "consult.phone_number",
+
+      "add.match",
+      "edit.match",
+      "delete.match",
+      "consult.match",
+
+      "add.town",
+      "edit.town",
+      "delete.town",
+      "consult.town",
+
+      "add.user",
+      "edit.user",
+      "delete.user",
+      "consult.user",
+
+      "add.role",
+      "edit.role",
+      "delete.role",
+      "consult.role",
+
+      "add.permission",
+      "edit.permission",
+      "delete.permission",
+      "consult.permission"
+    ]
+  },
+  {
+    "display_name" : "User Admin",
+    "description" : "Can manage users",
+    "name" : "admin.user",
+    "permissions":[
+      "add.user",
+      "edit.user",
+      "delete.user",
+      "consult.user"
+    ]
+  },
+  {
+    "display_name" : "Role Admin",
+    "description" : "Can manage roles",
+    "name" : "admin.role",
+    "permissions":[
+      "add.role",
+      "edit.role",
+      "delete.role",
+      "consult.role"
+    ]
+  },
+  {
+    "display_name" : "Permission Admin",
+    "description" : "Can manage permissions",
+    "name" : "admin.permission",
+    "permissions":[
+      "add.permission",
+      "edit.permission",
+      "delete.permission",
+      "consult.permission"
+    ]
+  },
+  {
+    "display_name" : "Cashier",
+    "description" : "a accès a la fonction de paiement en espece (je vais développer cette page, toi faut que tu cree la route vers le serveur)",
+    "name" : "cashier",
+    "permissions":[
+      "consult.offer",
+
+      "consult.stat",
+
+      "add.cash.offer"
+    ]
+  },
+  {
+    "display_name" : "Patner",
+    "description" : "à accès a la fonction scan uniquement",
+    "name" : "patner",
+    "permissions":[
+
+      "consult.offer",
+
+      "valid.ticket"
+    ]
+  },
+  {
+    "display_name" : "Manager",
+    "description" : "tous les rôles des fonctions du menu supervision",
+    "name" : "manager",
+    "permissions":[
+      "consult.offer",
+
+      "consult.phone_number",
+
+      "consult.match",
+
+      "consult.town",
+
+      "consult.stat"
+    ]
+  }
+]

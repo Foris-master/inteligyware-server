@@ -1,0 +1,99 @@
+[
+	{
+		"email" : "root@mailinator.com",
+		"phone_number": "+237698765432",
+		"first_name":"Josson",
+		"last_name":"Bauer",
+		"cni": "00000001110101",
+		"picture":"josson.jpg",
+		"settings":"",
+		"password":"root123",
+		"is_active": true,
+		"status": "active",
+		"patner":null,
+		"roles" : [
+			"super.administrator"
+		]
+	},
+	{
+		"email" : "admin@mailinator.com",
+		"phone_number": "+237672329242",
+		"first_name":"Melani",
+		"last_name":"Zafa",
+		"cni": "000232001110101",
+		"picture":"josson.jpg",
+		"settings":"",
+		"password":"admin123",
+		"is_active": true,
+		"status": "active",
+		"patner":null,
+		"roles" : [
+			"administrator"
+		]
+	},
+	{
+		"email" : "intelligyware@mailinator.com",
+		"phone_number": "+2376909802",
+		"first_name":"Abou",
+		"last_name":"Ramoutoulaye",
+		"cni": "0000000120101",
+		"picture":"abou.jpg",
+		"settings":"",
+		"password":"patner123",
+		"is_active": true,
+		"status": "active",
+		"patner":"inteligyware",
+		"roles" : [
+			"patner"
+		]
+	},
+	{
+		"email" : "sadad@mailinator.com",
+		"phone_number": "+2376909887632",
+		"first_name":"Amidou",
+		"last_name":"Fifen",
+		"cni": "324000120101",
+		"picture":"abou.jpg",
+		"settings":"",
+		"password":"patner123",
+		"is_active": true,
+		"status": "active",
+		"patner":"sadad",
+		"roles" : [
+			"patner"
+		]
+	},
+	{
+		"email" : "sadadmanager@mailinator.com",
+		"phone_number": "+237692345432",
+		"first_name":"Roger",
+		"last_name":"Borla",
+		"cni": "9302842039843",
+		"picture":"roger.jpg",
+		"settings":"",
+		"password":"manager123",
+		"is_active": true,
+		"status": "active",
+		"patner":"sadad",
+		"roles" : [
+			"manager"
+		]
+	},
+	{
+		"email" : "sadadcashier@mailinator.com",
+		"phone_number": "+2376079878",
+		"first_name":"Joseph",
+		"last_name":"Souverin",
+		"cni": "093840298432",
+		"picture":"joseph.jpg",
+		"settings":"",
+		"password":"cashier123",
+		"is_active": true,
+		"status": "active",
+		"patner":"sadad",
+		"roles" : [
+			"cashier"
+		]
+	}
+
+]
