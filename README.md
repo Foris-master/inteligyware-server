@@ -1,2 +1,2 @@
-# inteligyware-server
-inteligyware backend
+# c2ds-server
+cdds server
