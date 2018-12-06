@@ -9,6 +9,11 @@
 }
 .login-page{
     background:$color_3 !important;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6),#236388), url(/img/background.jpg) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 .btn.btn-primary:hover,

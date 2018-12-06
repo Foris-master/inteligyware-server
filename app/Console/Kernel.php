@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\CheckSubscription;
+use App\Console\Commands\GenerateAdmin;
 use App\Console\Commands\GetCurrencyRate;
 use App\Console\Commands\UserBirthday;
 use Illuminate\Console\Scheduling\Schedule;
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
         GetCurrencyRate::class,
         UserBirthday::class,
         CheckSubscription::class,
+        GenerateAdmin::class,
     ];
 
     /**
