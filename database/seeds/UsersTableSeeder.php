@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UsersTableSeeder extends Seeder
 {
@@ -21,6 +23,15 @@ class UsersTableSeeder extends Seeder
             $patner =isset($item["patner"])?$item["patner"]:null;
             unset($item["roles"]);
             unset($item["patner"]);
+
+            if(isset($item['picture'])){
+                $fop =base_path("database/seeds/json/images/users/picture/".$item['picture']);
+                if (Storage::has($fop))
+                    Storage::delete($fop);
+                $fpath = "img/user/picture/" . uniqid() . '.png' ;
+                $item['picture'] = $fpath;
+                Storage::put($fpath,  File::get($fop));
+            }
             if($patner){
                 $p = \App\Patner::where('name','like',$patner)->first();
                 if($p)

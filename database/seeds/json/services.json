@@ -1,0 +1,39 @@
+[
+	{
+		"name":"canal sat",
+		"code" : "cs",
+		"description": "services des bouquet canalsat",
+		"logo": "canalsat.png"
+	},
+	{
+		"name":"Kit canal sat",
+		"code" : "kcs",
+		"description": "services des kits canalsat",
+		"logo": "kit_canalsat.png"
+	},
+	{
+		"name":"Orange Money",
+		"code" : "om",
+		"description": "Orange Money service",
+		"logo": "orange_momo.png"
+	},
+	{
+		"name":"MTN Mobile Money",
+		"code" : "mmm",
+		"description": "MTN Mobile Money Service",
+		"logo": "mtn_momo.png"
+	},
+	{
+		"name":"Orange Service",
+		"code" : "os",
+		"description": "service telecom de orange",
+		"logo": "orange.png"
+	},
+	{
+		"name":"MTN Service",
+		"code" : "ms",
+		"description": "services telecom de  mtn",
+		"logo": "mtn.png"
+	}
+
+]

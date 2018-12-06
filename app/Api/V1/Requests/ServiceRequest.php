@@ -28,6 +28,7 @@ class ServiceRequest extends FormRequest
         $rules = [
             'name' => 'required|min:2|max:255',
             'description' => 'required|min:2|max:255',
+            'logo'=>'image',
             'code' => 'unique:services,code',
             'service_id' => 'integer|exists:services,id',
         ];

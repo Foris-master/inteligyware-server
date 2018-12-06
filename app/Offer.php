@@ -11,7 +11,7 @@ class Offer extends Model
     use RestTrait;
 
 
-    protected $fillable = ['name','amount','service_id'];
+    protected $fillable = ['name','code','amount','service_id'];
 
     protected $dates = ['created_at','updated_at'];
 
@@ -19,7 +19,7 @@ class Offer extends Model
 
     public function getLabel()
     {
-        return $this->name ;
+        return $this->code ;
     }
 
     public function clients(){

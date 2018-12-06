@@ -27,6 +27,7 @@ class OfferRequest extends FormRequest
     public function rules(){
         $rules = [
             'name' => 'required|min:2|max:255',
+            'code' => 'unique:offers,code',
             'amount' => 'required',
             'service_id' => 'integer|exists:services,id',
         ];

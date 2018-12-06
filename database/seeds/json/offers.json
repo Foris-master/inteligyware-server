@@ -1,0 +1,117 @@
+[
+	{
+		"name":"Depot Orange Money",
+		"amount": 0,
+		"code" : "dom",
+		"service": "om"
+	},
+	{
+		"name":"Depot MTN Mobile Money",
+		"amount": 0,
+		"code" : "dmmm",
+		"service": "mmm"
+	},
+	{
+		"name":"Retrait Orange Money",
+		"amount": 0,
+		"code" : "rom",
+		"service": "om"
+	},
+	{
+		"name":"Retrait MTN Mobile Money",
+		"amount": 0,
+		"code" : "rmmm",
+		"service": "mmm"
+	},
+	{
+		"name":"Recharge Credit Orange",
+		"amount": 0,
+		"code" : "rco",
+		"service": "os"
+	},
+	{
+		"name":"Recharge Credit MTN",
+		"amount": 0,
+		"code" : "rcm",
+		"service": "ms"
+	},
+
+	{
+		"name":"Identification de puce Orange",
+		"amount": 500,
+		"code" : "idpo",
+		"service": "os"
+	},
+	{
+		"name":"Identification de puce MTN",
+		"amount": 500,
+		"code" : "idpm",
+		"service": "ms"
+	},
+	{
+		"name":"Creation compte Orange money",
+		"amount": 500,
+		"code" : "ccomomo",
+		"service": "om"
+	},
+	{
+		"name":"Creation compte MTN mobile money",
+		"amount": 500,
+		"code" : "ccmmomo",
+		"service": "mmm"
+	},
+	{
+		"name":"TOUT CANAL+",
+		"amount": 40000,
+		"code" : "tcp",
+		"service": "cs"
+	},
+	{
+		"name":"EVASION +",
+		"amount": 20000,
+		"code" : "evp",
+		"service": "cs"
+	},
+	{
+		"name":"ACCESS+",
+		"amount": 14000,
+		"code" : "acp",
+		"service": "cs"
+	},
+	{
+		"name":"ESSENTIEL+",
+		"amount": 12000,
+		"code" : "esp",
+		"service": "cs"
+	},
+	{
+		"name":"ÉVASION",
+		"amount": 10000,
+		"code" : "ev",
+		"service": "cs"
+	},
+	{
+		"name":"ACCESS",
+		"amount": 5000,
+		"code" : "ac",
+		"service": "cs"
+	},
+	{
+		"name":"Telecommande decodeur",
+		"amount": 1000,
+		"code" : "tdec",
+		"service": "kcs"
+	},
+	{
+		"name":"Decodeur Canalsat",
+		"amount": 10000,
+		"code" : "dec",
+		"service": "kcs"
+	},
+	{
+		"name":"Decodeur Canalsat HD",
+		"amount": 15000,
+		"code" : "dechd",
+		"service": "kcs"
+	}
+]
