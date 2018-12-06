@@ -9,11 +9,18 @@ $api->version('v1', function (Router $api) {
     $api->group(['namespace'=>'App\Api\V1\Controllers'],function (Router $api){
 
         $api->group(['prefix' => 'auth'], function(Router $api) {
-            $api->post('signin', 'Auth\AuthController@postRegister');
-            $api->post('signup', 'Auth\AuthController@postRegisterWithPhoneNumber');
+            $api->post('signin', 'Auth\AuthController@login');
+            $api->post('signup', 'Auth\AuthController@postRegister');
             $api->post('send-code', 'Auth\AuthController@sendPhoneVerificationCode');
             $api->post('verify-code', 'Auth\AuthController@verifyCode');
             $api->get('refresToken', 'Auth\AuthController@refresToken');
+        });
+
+        $api->group(['prefix' => 'auth','middleware' => 'jwt.auth'], function(Router $api) {
+
+            $api->post('logout', 'LogoutController@logout');
+            $api->post('refresh', 'RefreshController@refresh');
+            $api->get('me', 'Auth\AuthController@getAuthenticatedUser');
         });
 
         $api->group(['middleware' => 'jwt.auth'], function(Router $api) {

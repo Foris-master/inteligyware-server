@@ -8,7 +8,6 @@ use Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
-use Setting;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -130,9 +129,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Transaction::class);
     }
 
-    public function getSettingsAttribute(){
+    /*public function getSettingsAttribute(){
         return Setting::all($this->id);
-    }
+    }*/
 
     public function getRatingsAttribute($val)
     {

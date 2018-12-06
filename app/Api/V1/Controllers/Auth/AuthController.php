@@ -48,13 +48,13 @@ class AuthController extends Controller
      */
     public function login(Request $request){
 
-        $credentials = $request->only('login', 'password');
-        $email=$credentials["login"];
+        $credentials = $request->only('email', 'password');
+        $email=$credentials["email"];
         if($email==null)
             return response()->json(['error' => 'missing login'], 403);
         $validator = Validator::make(['email'=>$email], ['email'=>'email']);
         if($validator->fails()){
-            $user= User::where("phone_number_number","=",$email)->first();
+            $user= User::where("phone_number","=",$email)->first();
         }else{
             $user = User::where('email', '=', $email)->first();
         }

@@ -1,0 +1,24 @@
+@import "../../../material/variables";
+.Login-formContainer{
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    a img{
+        width:100%;
+    }
+}
+.login-page{
+    background:$color_3 !important;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus{
+    background:$color_2 !important;
+}
+
+.wiicod{
+    margin-top:20px;
+    a{
+        color: $color_2 !important;
+    }
+}
