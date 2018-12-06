@@ -34,6 +34,13 @@ Route::get('reset_password/{token}', ['as' => 'password.reset', function($token)
 }]);
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('app', function () {
+    return view('index');
+});
+Route::get('app/{all}', function () {
     return view('index');
 });
 
