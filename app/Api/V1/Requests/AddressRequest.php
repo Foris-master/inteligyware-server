@@ -27,7 +27,6 @@ class AddressRequest extends FormRequest
         $rules = [
             'name'=>'required|min:0|max:255',
             'town_id'=>'required|integer|exists:towns,id',
-            'phone_number_id'=>'integer|exists:phone_numbers,id',
 
         ];
         return RuleHelper::get_rules($this->method(),$rules);

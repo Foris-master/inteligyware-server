@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(false);
             $table->string('status')->default('inactive');
             $table->string('password');
+            $table->integer('address_id')->unsigned()->index()->nullable();
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('set null');
             $table->integer('patner_id')->unsigned()->index()->nullable();
             $table->foreign('patner_id')->references('id')->on('patners')->onDelete('set null');
 

@@ -6,7 +6,6 @@ use Faker\Generator as Faker;
 $factory->define(App\Address::class, function (Faker $faker) {
 
 
-    $u = (FactoryHelper::getOrCreate(\App\User::class))->id;
     $t = (FactoryHelper::getOrCreate(\App\Town::class))->id;
 
 
@@ -14,8 +13,6 @@ $factory->define(App\Address::class, function (Faker $faker) {
     return [
         //
         'name'=>$faker->address,
-
-        'user_id'=>$u,
         'town_id'=>$t,
     ];
 });

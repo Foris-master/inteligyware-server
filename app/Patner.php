@@ -12,7 +12,7 @@ class Patner extends Model
     use RestTrait,Ratingable;
 
 
-    protected $fillable = ['name','email','logo','phone_number','address','town_id','is_active','status'];
+    protected $fillable = ['name','email','logo','phone_number','address_id','is_active','status'];
 
     protected $dates = ['created_at','updated_at'];
 
@@ -48,12 +48,15 @@ class Patner extends Model
         return $this->hasMany(Client::class);
     }
 
+    public function address(){
+        return $this->belongsTo(Address::class);
+    }
     public function town(){
-        return $this->belongsTo(Town::class);
+        return $this->hasManyThrough(Town::class,Address::class);
     }
 
-    public function stations(){
-        return $this->hasMany(Station::class);
+    public function point_of_sales(){
+        return $this->hasMany(PointOfSale::class);
     }
     public function mobile_operators(){
         return $this->belongsToMany(MobileOperator::class,'stations');

@@ -24,7 +24,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'email', 'phone_number','failed_password_attemps','is_active','status',
-        'password','patner_id','last_device_id','last_login','remember_token'
+        'password','patner_id','address_id','last_device_id','last_login','remember_token'
     ];
 
     public $appends=['ratings','full_name','all_status'];
@@ -91,6 +91,9 @@ class User extends Authenticatable implements JWTSubject
     public function chats(){
         return $this->belongsToMany(Chat::class,'chat_users')->withPivot('is_admin');
     }
+    public function address(){
+        return $this->belongsTo(Address::class);
+    }
     public function chat_users(){
         return $this->hasMany(ChatUser::class);
     }
@@ -108,9 +111,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Memo::class);
     }
 
-    public  function offers(){
-        return $this->hasMany(Offer::class);
-    }
 
     public function partner(){
         return $this->belongsTo(Patner::class);

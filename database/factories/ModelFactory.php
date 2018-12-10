@@ -20,6 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     $p = FactoryHelper::getOrCreate(\App\Patner::class)->id;
     $d = null;
     $s =array_random(\App\User::$Status);
+    $a = $faker->boolean(40)?(FactoryHelper::getOrCreate(\App\Address::class))->id:null;
 
     return [
         'email' => $faker->unique()->safeEmail,
@@ -31,6 +32,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'patner_id'=>$p,
         'last_device_id'=>$d,
         'last_login'=>$faker->dateTime(),
+        'address_id'=>$a,
         'remember_token' => str_random(10),
         'settings'=>''
     ];

@@ -19,9 +19,8 @@ class CreatePatnersTable extends Migration
             $table->string('email')->unique();
             $table->string('logo');
             $table->string('phone_number');
-            $table->string('address');
-            $table->integer('town_id')->unsigned()->index();
-            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
+            $table->integer('address_id')->unsigned()->index();
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->boolean('is_active')->default(false);
             $table->string('status',15)->default('inactive');
 

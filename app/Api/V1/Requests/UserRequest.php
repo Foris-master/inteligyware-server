@@ -37,6 +37,7 @@ class UserRequest extends FormRequest
             'is_active'=>'boolean',
             'status'=>'required|min:0|max:255'.Rule::in(User::$Status),
             'password'=>'required|min:6',
+            'address_id'=>'integer|exists:addresses,id',
             'patner_id'=>'integer|exists:patners,id',
             'last_device_id'=>'integer|exists:devices,id',
             'last_login'=>'date',
