@@ -30,11 +30,15 @@ class Station extends Model
         return $this->belongsTo(MobileOperator::class);
     }
 
-    public function service_stations(){
-        return $this->hasMany(ServiceStation::class);
+    public function point_of_sale_service_stations(){
+        return $this->hasMany(PointOfSaleServiceStation::class);
     }
 
-    public function services(){
-        return $this->belongsToMany(Service::class,'service_stations');
+    public function point_of_sale_services(){
+        return $this->belongsToMany(Service::class,'point_of_sale_service_stations');
+    }
+
+    public  function transactions(){
+        return $this->morphMany(Transaction::class,'target');
     }
 }

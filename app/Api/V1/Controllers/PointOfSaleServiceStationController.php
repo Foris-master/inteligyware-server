@@ -2,27 +2,26 @@
 
 namespace App\Api\V1\Controllers;
 
-use App\Api\V1\Requests\ServiceStationRequest;
-use App\ServiceStation;
+use App\Api\V1\Requests\PointOfSaleServiceStationRequest;
 use App\Helpers\RestHelper;
 use App\Http\Controllers\Controller;
+use App\PointOfSaleServiceStation;
 
 /**
- * @group ServiceStation
- *
- * This controller is used for the management of match's ServiceStation
- * Class ServiceStationController
+ * @group PointOfSaleServiceStation
+ * Class PointOfSaleServiceStationController
  * @package App\Api\V1\Controllers
  */
-class ServiceStationController extends Controller
+class PointOfSaleServiceStationController extends Controller
 {
     /**
-     * Start action, use to show all bills inside the database
-     * @return \Illuminate\Http\JsonResponse
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return RestHelper::get(ServiceStation::class);
+        return RestHelper::get(PointOfSaleServiceStation::class);
     }
 
     /**
@@ -36,14 +35,13 @@ class ServiceStationController extends Controller
     }
 
     /**
-     * Action to be execute to store a newly created bill in storage.
-     *
-     * @param ServiceStationRequest $request
+     * Store a newly created resource in storage.
+     * @param PointOfSaleServiceStationRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(ServiceStationRequest $request)
+    public function store(PointOfSaleServiceStationRequest $request)
     {
-        return RestHelper::store(ServiceStation::class,$request->all());
+        return RestHelper::store(PointOfSaleServiceStation::class,$request->all());
     }
 
     /**
@@ -54,7 +52,7 @@ class ServiceStationController extends Controller
      */
     public function show($id)
     {
-        return RestHelper::show(ServiceStation::class,$id);
+        return RestHelper::show(PointOfSaleServiceStation::class,$id);
     }
 
     /**
@@ -71,13 +69,13 @@ class ServiceStationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ServiceStationRequest  $request
+     * @param  PointOfSaleServiceStationRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(ServiceStationRequest $request, $id)
+    public function update(PointOfSaleServiceStationRequest $request, $id)
     {
-        return RestHelper::update(ServiceStation::class,$request->all(),$id);
+        return RestHelper::update(PointOfSaleServiceStation::class,$request->all(),$id);
     }
 
     /**
@@ -88,6 +86,6 @@ class ServiceStationController extends Controller
      */
     public function destroy($id)
     {
-        return RestHelper::destroy(ServiceStation::class,$id);
+        return RestHelper::destroy(PointOfSaleServiceStation::class,$id);
     }
 }

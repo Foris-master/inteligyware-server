@@ -34,4 +34,8 @@ class Client extends Model
     public function patner(){
         return $this->belongsTo(Patner::class);
     }
+
+    public  function transactions(){
+        return $this->morphMany(Transaction::class,'target');
+    }
 }

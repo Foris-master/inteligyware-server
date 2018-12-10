@@ -32,10 +32,12 @@ class TransactionRequest extends FormRequest
      */
     public function rules(){
         $rules = [
-            'concern_id'=>'required|required_with:concern_type|integer|morph_exists:concern_type',
-            'concern_type'=>'max:255',
+            'target_id'=>'required|required_with:target_type|integer|morph_exists:target_type',
+            'target_type'=>'max:255|'.Rule::in(Transaction::$Targets),
             'amount'=>'required|numeric',
             'status'=>Rule::in(Transaction::$Status),
+            'point_of_sale_service_id'=>'required|integer|exists:point_of_sale_services,id',
+            'offer_id'=>'required|integer|exists:offers,id',
             'user_id'=>'required|integer|exists:users,id',
         ];
         return RuleHelper::get_rules($this->method(),$rules);

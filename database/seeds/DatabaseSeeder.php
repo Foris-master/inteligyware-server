@@ -43,8 +43,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ServicesTableSeeder::class);
         $this->call(PointOfSalesTableSeeder::class);
         $this->call(PointOfSaleServicesTableSeeder::class);
+        $this->call(PointOfSaleServiceStationsTableSeeder::class);
         $this->call(StationsTableSeeder::class);
-        $this->call(ServiceStationsTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
         $this->call(OffersTableSeeder::class);
         $this->call(ClientOffersTableSeeder::class);

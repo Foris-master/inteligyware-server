@@ -41,4 +41,8 @@ class PointOfSale extends Model
     public function stations(){
         return $this->hasMany(Station::class);
     }
+
+    public  function transactions(){
+        return $this->hasManyThrough(Transaction::class,PointOfSaleService::class);
+    }
 }

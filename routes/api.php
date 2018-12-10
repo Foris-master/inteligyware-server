@@ -43,6 +43,7 @@ $api->version('v1', function (Router $api) {
             $api->resource("patners", 'PatnerController');
             $api->resource("point_of_sales", 'PointOfSaleController');
             $api->resource("point_of_sale_services", 'PointOfSaleServiceController');
+            $api->resource("point_of_sale_service_stations", 'PointOfSaleServiceStationController');
             $api->resource("payments", 'PaymentController');
             $api->resource("ratings", 'RatingController');
             $api->resource("roles", 'RoleController');

@@ -7,7 +7,7 @@ namespace App\Api\V1\Requests;
 use App\Helpers\RuleHelper;
 use Dingo\Api\Http\FormRequest;
 
-class ServiceStationRequest extends FormRequest
+class PointOfSaleServiceStationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class ServiceStationRequest extends FormRequest
      */
     public function rules(){
         $rules = [
-            'service_id'=>'required|integer|exists:services,id',
             'station_id'=>'required|integer|exists:stations,id',
+            'point_of_sale_service_id'=>'required|integer|exists:point_of_sale_services,id',
 
         ];
         return RuleHelper::get_rules($this->method(),$rules);

@@ -5,13 +5,13 @@ namespace App;
 use App\Traits\RestTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceStation extends Model
+class PointOfSaleServiceStation extends Model
 {
     //
     use RestTrait;
 
 
-    protected $fillable = ['service_id','station_id'];
+    protected $fillable = ['point_of_sale_service_id','station_id'];
 
     protected $dates = ['created_at','updated_at'];
 
@@ -19,11 +19,11 @@ class ServiceStation extends Model
 
     public function getLabel()
     {
-        return $this->service_id.'-'.$this->station_id ;
+        return $this->point_of_sale_service_id.'-'.$this->station_id ;
     }
 
-    public function service(){
-        return $this->belongsTo(Service::class);
+    public function point_of_sale_service(){
+        return $this->belongsTo(PointOfSaleService::class);
     }
     public function station(){
         return $this->belongsTo(Station::class);

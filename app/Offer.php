@@ -29,6 +29,9 @@ class Offer extends Model
     public  function client_offers(){
         return $this->hasMany(ClientOffer::class);
     }
+    public  function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 
     public function service(){
         return $this->belongsTo(Service::class);
