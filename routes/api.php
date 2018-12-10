@@ -40,7 +40,9 @@ $api->version('v1', function (Router $api) {
             $api->resource("mobile_operators", 'MobileOperatorController');
             $api->resource("offers", 'OfferController');
             $api->resource("permissions", 'PermissionController');
-            $api->resource("patner", 'PatnerController');
+            $api->resource("patners", 'PatnerController');
+            $api->resource("point_of_sales", 'PointOfSaleController');
+            $api->resource("point_of_sale_services", 'PointOfSaleServiceController');
             $api->resource("payments", 'PaymentController');
             $api->resource("ratings", 'RatingController');
             $api->resource("roles", 'RoleController');

@@ -26,6 +26,10 @@ class Offer extends Model
         return $this->belongsToMany(Client::class,'client_offers');
     }
 
+    public  function client_offers(){
+        return $this->hasMany(ClientOffer::class);
+    }
+
     public function service(){
         return $this->belongsTo(Service::class);
     }

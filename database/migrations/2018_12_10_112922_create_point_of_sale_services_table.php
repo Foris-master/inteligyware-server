@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStationsTable extends Migration
+class CreatePointOfSaleServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateStationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stations', function (Blueprint $table) {
+        Schema::create('point_of_sale_services', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->float('bail');
-            $table->string('identifier');
-
+            $table->integer('service_id')->unsigned()->index();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->integer('point_of_sale_id')->unsigned()->index();
             $table->foreign('point_of_sale_id')->references('id')->on('point_of_sales')->onDelete('cascade');
-
-            $table->integer('mobile_operator_id')->unsigned()->index();
-            $table->foreign('mobile_operator_id')->references('id')->on('mobile_operators')->onDelete('cascade');
+            $table->unique(['service_id','point_of_sale_id']);
 
             $table->timestamps();
         });
@@ -36,6 +32,6 @@ class CreateStationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stations');
+        Schema::dropIfExists('point_of_sale_services');
     }
 }

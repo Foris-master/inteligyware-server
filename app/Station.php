@@ -11,7 +11,7 @@ class Station extends Model
     use RestTrait;
 
 
-    protected $fillable = ['patner_id','mobile_operator_id','identifier','name','bail'];
+    protected $fillable = ['point_of_sale_id','mobile_operator_id','identifier','name','bail'];
 
     protected $dates = ['created_at','updated_at'];
 
@@ -22,8 +22,8 @@ class Station extends Model
         return $this->name ;
     }
 
-    public function patner(){
-        return $this->belongsTo(Patner::class);
+    public function point_of_sale(){
+        return $this->belongsTo(PointOfSale::class);
     }
 
     public function mobile_operator(){

@@ -37,12 +37,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('app', function () {
+Route::get('/app/{state}', function () {
     return view('index');
-});
-Route::get('app/{all}', function () {
-    return view('index');
-});
+})->where('state', '.*');
+
 
 
 Route::get('/img/{model}/{image}', function ($model, $image) {

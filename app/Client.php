@@ -23,6 +23,10 @@ class Client extends Model
         return $this->name ;
     }
 
+    public  function client_offers(){
+        return $this->hasMany(ClientOffer::class);
+    }
+
     public function offers(){
         return $this->belongsToMany(Offer::class,'client_offers');
     }

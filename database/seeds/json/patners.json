@@ -5,7 +5,6 @@
 		"phone_number": "+237698765432",
 		"logo": "sadad.png",
 		"address": "bankolo",
-		"town": "yaounde",
 		"is_active": true,
 		"status": "active"
 	},
@@ -15,7 +14,6 @@
 		"phone_number": "+237698765432",
 		"logo": "inteligyware.png",
 		"address": "mokolo elobi",
-		"town": "yaounde",
 		"is_active": true,
 		"status": "active"
 	}

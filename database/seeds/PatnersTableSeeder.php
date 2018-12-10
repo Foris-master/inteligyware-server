@@ -18,8 +18,8 @@ class PatnersTableSeeder extends Seeder
         $items = json_decode(file_get_contents($path),true);
         foreach ($items as $item){
 
-            $town =isset($item["town"])?$item["town"]:null;
-            unset($item["town"]);
+            $address =isset($item["address"])?$item["address"]:null;
+            unset($item["address"]);
 
             if(isset($item['logo'])){
                 $fop =base_path("database/seeds/json/images/patners/logo/".$item['logo']);
@@ -30,10 +30,10 @@ class PatnersTableSeeder extends Seeder
                 Storage::put($fpath,  File::get($fop));
             }
 
-            if($town){
-                $t = \App\Town::where('name','like',$town)->first();
+            if($address){
+                $t = \App\Address::where('name','like',$address)->first();
                 if($t)
-                    $item['town_id']=$t->id;
+                    $item['address_id']=$t->id;
             }
             \App\Patner::create($item);
 

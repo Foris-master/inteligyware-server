@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrenciesTableSeeder::class);
         $this->call(SubscriptionsTableSeeder::class);
         $this->call(TownsTableSeeder::class);
+        $this->call(AddressesTableSeeder::class);
         $this->call(PatnersTableSeeder::class);
         $this->call(UsersTableSeeder::class);
 
@@ -30,7 +31,6 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(MobileOperatorsTableSeeder::class);
-        $this->call(AddressesTableSeeder::class);
 //        $this->call(PaymentMethodsTableSeeder::class);
 
 
@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ServicesTableSeeder::class);
         $this->call(PointOfSalesTableSeeder::class);
+        $this->call(PointOfSaleServicesTableSeeder::class);
         $this->call(StationsTableSeeder::class);
         $this->call(ServiceStationsTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
