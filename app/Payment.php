@@ -15,6 +15,10 @@ class Payment extends Model
 
     protected $dates = ['created_at','updated_at','payment_date'];
 
+    public $appends=['all_status'];
+
+    public static $Status = ['new', 'pending', 'paid', 'failled'];
+
     public function  __construct(array $attributes = [])
     {
         $this->files = ['proof','pdf'];
@@ -25,6 +29,10 @@ class Payment extends Model
     public function getLabel()
     {
         return $this->amount.'-'.$this->bill_id;
+    }
+
+    public function getAllStatusAttribute(){
+        return self::$Status;
     }
 
     public function  bill(){

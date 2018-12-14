@@ -11,13 +11,17 @@ class Bill extends Model
     use RestTrait;
 
 
-    protected $fillable = ['amount','pdf','concern_type','concern_id'];
+    protected $fillable = ['amount','status','pdf','concern_type','concern_id'];
 
     protected $dates = ['created_at','updated_at'];
+
+    public $appends=['all_status'];
 
     private $shouldFireEvent=true;
 
     public static $Corncerns = [Offer::class, SubscriptionUser::class];
+
+    public static $Status = ['new', 'pending', 'paid', 'failled'];
 
 
     public function  __construct(array $attributes = [])
@@ -47,6 +51,10 @@ class Bill extends Model
     public function getLabel()
     {
         return $this->amount ;
+    }
+
+    public function getAllStatusAttribute(){
+        return self::$Status;
     }
 
     public function setConernTypeAttribute($val)

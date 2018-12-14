@@ -15,6 +15,7 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status',10);
             $table->float('amount');
             $table->string('pdf');
             $table->morphs('concern');

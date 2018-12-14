@@ -6,6 +6,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Payment::class, function (Faker $faker) {
     $b = (FactoryHelper::getOrCreate(\App\Bill::class));
     $c = (FactoryHelper::getOrCreate(\App\Currency::class))->id;
+    $s = array_random(\App\Payment::$Status);
 
 
     //$pm = (FactoryHelper::getOrCreate(\App\PaymentMethod::class,true, ["patner_id"=>$b->patner_id]))->id;
@@ -20,6 +21,7 @@ $factory->define(App\Payment::class, function (Faker $faker) {
     return [
         //
         'amount'=>$amount,
+        'status'=>$s,
         'amount_paid'=>$ap,
         'reference'=>$faker->buildingNumber,
         'proof'=>$p,

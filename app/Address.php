@@ -22,7 +22,7 @@ class Address extends Model
         return $this->name ;
     }
 
-    public function user(){
+    public function users(){
         return $this->hasMany(User::class);
     }
     public function point_of_sales(){

@@ -45,8 +45,4 @@ class Service extends Model
     public function point_of_sales(){
         return $this->belongsToMany(PointOfSale::class,'point_of_sale_services');
     }
-
-    public function stations(){
-        return $this->belongsToMany(Station::class,'service_stations');
-    }
 }

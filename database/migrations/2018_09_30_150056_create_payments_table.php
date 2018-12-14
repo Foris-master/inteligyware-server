@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->float('amount');
             $table->float('amount_paid');
+            $table->string('status',10);
             $table->string('reference');
             $table->string('proof');
             $table->dateTime('payment_date');
