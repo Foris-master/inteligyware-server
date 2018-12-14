@@ -43,7 +43,7 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/'.env('APP_LOG_FILE_NAME','peex.log')),
+            'path' => storage_path('logs/'.env('APP_LOG_FILE_NAME','inteligyware.log')),
             'level' => 'debug',
             'days' => env('APP_LOG_MAX_FILES',7),
         ],

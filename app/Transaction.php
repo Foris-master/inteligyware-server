@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PatnerScope;
 use App\Traits\RestTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,12 @@ class Transaction extends Model
     public $appends=['all_status'];
 
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new PatnerScope());
+    }
 
     public function getLabel()
     {

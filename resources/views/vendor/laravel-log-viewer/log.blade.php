@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laravel log viewer</title>
+  <title>Inteligyware log viewer</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <h1><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Cash and Carry Logs</h1>
-      <p class="text-muted"><i>By Wiicod</i></p>
+      <p class="text-muted"><i>By Inteligyware</i></p>
       <div class="list-group">
         @foreach($files as $file)
           <a href="?l={{ base64_encode($file) }}"

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PatnerScope;
 use App\Traits\RestTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,12 +20,19 @@ class PointOfSale extends Model
         parent::__construct($attributes);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new PatnerScope());
+    }
+
     public function getLabel()
     {
         return $this->name ;
     }
 
-    public function getLogoAttribute($val)
+    public function getPictureAttribute($val)
     {
         if($val==null){
             $val='default/img/point_of_sale_picture.jpg';
@@ -38,6 +46,14 @@ class PointOfSale extends Model
     public function patner(){
         return $this->belongsTo(Patner::class);
     }
+    public  function point_of_sale_services(){
+        return $this->hasMany(PointOfSaleService::class);
+    }
+
+    public function services(){
+        return $this->belongsToMany(Service::class,'point_of_sale_services');
+    }
+
     public function stations(){
         return $this->hasMany(Station::class);
     }

@@ -38,8 +38,12 @@ class Service extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public function service_stations(){
-        return $this->hasMany(ServiceStation::class);
+    public  function point_of_sale_services(){
+        return $this->hasMany(PointOfSaleService::class);
+    }
+
+    public function point_of_sales(){
+        return $this->belongsToMany(PointOfSale::class,'point_of_sale_services');
     }
 
     public function stations(){

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PatnerScope;
 use App\Traits\RestTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,14 @@ class Client extends Model
     protected $fillable = ['name','phone_number','email','patner_id','type'];
 
     protected $dates = ['created_at','updated_at'];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new PatnerScope());
+    }
 
 
 

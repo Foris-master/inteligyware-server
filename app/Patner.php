@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PatnerScope;
 use App\Traits\RestTrait;
 use Ghanem\Rating\Traits\Ratingable;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +26,13 @@ class Patner extends Model
     {
         $this->files = ['logo'];
         parent::__construct($attributes);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new PatnerScope());
     }
 
     public function getLabel()

@@ -37,7 +37,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/app/{state}', function () {
+Route::get('/app{state}', function () {
     return view('index');
 })->where('state', '.*');
 

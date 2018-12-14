@@ -4,6 +4,7 @@ namespace App;
 
 use App\Traits\RestTrait;
 use Ghanem\Rating\Traits\Ratingable;
+use Auth;
 use Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,6 +46,19 @@ class User extends Authenticatable implements JWTSubject
     public static $Status = ['inactive', 'active', 'insolvable', 'banned'];
 
 
+    protected static function boot()
+    {
+        parent::boot();
+        if(Auth::check()){
+            $user = Auth::user();
+            if(!$user->hasRole(['super.administrator','administrator'])){
+                static::addGlobalScope('patner',function ($builder)use($user){
+
+                    $builder->wherePatnerId($user->patner_id);
+                });
+            }
+        }
+    }
 
     public function getLabel()
     {

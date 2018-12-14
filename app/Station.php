@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\PatnerScope;
 use App\Traits\RestTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,12 @@ class Station extends Model
 
     protected $dates = ['created_at','updated_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new PatnerScope());
+    }
 
 
     public function getLabel()
@@ -35,7 +42,7 @@ class Station extends Model
     }
 
     public function point_of_sale_services(){
-        return $this->belongsToMany(Service::class,'point_of_sale_service_stations');
+        return $this->belongsToMany(PointOfSaleService::class,'point_of_sale_service_stations');
     }
 
     public  function transactions(){
