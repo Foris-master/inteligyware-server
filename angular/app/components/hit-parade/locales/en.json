@@ -1,0 +1,10 @@
+{
+  "comp_hit_parade" : {
+    "best_seller":"Seller of the month",
+    "best_product":"Movie of the month",
+    "transaction_number":"Number of Tansactions",
+    "best_point_of_sale":"Point of sale of the month",
+    "turnover":"Turnover"
+
+  }
+}

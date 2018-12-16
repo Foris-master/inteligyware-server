@@ -1,0 +1,10 @@
+{
+  "comp_graph-town-turnover" : {
+    "title":"Turnover of Movie theaters",
+    "sales":"Sales",
+    "filter":"Filter by date",
+    "turnover":"Turnover",
+    "from":"From",
+    "to":"to"
+  }
+}

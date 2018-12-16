@@ -24,7 +24,7 @@ public/css
 public/build
 public/locales
 _ide_helper.php
-.ebextension/00environmentVariables.config
+/.ebextension/00environmentVariables.config
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

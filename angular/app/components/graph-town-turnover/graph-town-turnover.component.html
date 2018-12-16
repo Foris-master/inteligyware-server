@@ -1,0 +1,61 @@
+<div class="col-md-12">
+    <div class="box box-black">
+        <div class="box-header with-border">
+            <h3 class="box-title" translate>comp_graph-town-turnover.title</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="text-center" ng-if="!vm.chart_loading">
+                        <strong translate>comp_graph-town-turnover.sales</strong>
+                    </p>
+                    <div class="chart" ng-if="!vm.chart_loading">
+                        <div class="chart" >
+                            <canvas id="area" class="chart chart-bar" chart-data="vm.barChartData" chart-labels="vm.barChartLabels"
+                                    chart-legend="false" chart-series="vm.barChartSeries" chart-click="vm.onClick"
+                                    chart-colours="vm.barChartColours" style="height: 250px;">
+                            </canvas>
+                        </div>
+
+                    </div>
+                    <div class="overlay" ng-show="vm.chart_loading">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-center">
+                        <strong translate>comp_graph-town-turnover.filter</strong>
+                    </p>
+                    <div class="row">
+                        <div class="col-md-4 text-right" translate>comp_graph-town-turnover.from</div>
+                        <div class="col-md-8">
+                            <datepicker date-format="y-M-d" date-set="{{vm.from_date_def}}">
+                                <input ng-change="vm.dateChange()" class="form-control" ng-model="vm.from_date" type="text"/>
+                            </datepicker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 text-right" translate>comp_graph-town-turnover.to</div>
+                        <div class="col-md-8">
+                            <datepicker date-format="y-M-d" date-set="{{vm.to_date_def}}">
+                                <input ng-change="vm.dateChange()" ng-model="vm.todate" class="form-control" type="text"/>
+                            </datepicker>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="row-fuild">
+                <tags-input ng-model="vm.point_of_sales" display-property="name"  on-tag-removed="vm.refreshchart($tag,0)"
+                            on-tag-added="vm.refreshchart($tag,1)">
+                    <auto-complete display-property="name" min-length="1"
+                                   source="vm.loadMovietheaters($query)"></auto-complete>
+                </tags-input>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "dest-path": "angular/app/pages/admins",
+  "dest-dir": "admins",
+  "src-dir":"angular/groups",
+  "route-config-file":"angular/config/routes.config.js",
+  "component-dir": "angular/app/components",
+  "trees-component": "nav-sidebar",
+  "overide-exist":true,
+  "verbose":false
+}

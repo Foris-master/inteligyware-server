@@ -1,0 +1,9 @@
+{
+  "comp_hit_parade" : {
+    "best_seller":"Vendeur du mois",
+    "transaction_number":"Nombre de Tansactions",
+    "best_point_of_sale":"Point de vente du mois",
+    "turnover":"Chiffre d'affaire"
+
+  }
+}

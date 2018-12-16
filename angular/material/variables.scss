@@ -32,6 +32,7 @@ $success: #3c763d;
 $danger: #bc3438;
 //$primary-dark: #367fa9;
 $primary-dark: darken( $primary, 10% );
+$primary-light: lighten( $primary, 10% );
 $color_4:#ffffff;
 /*
 lighten( $base-color, 10% )

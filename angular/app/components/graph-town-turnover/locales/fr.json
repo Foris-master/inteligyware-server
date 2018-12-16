@@ -1,0 +1,10 @@
+{
+  "comp_graph-town-turnover" : {
+    "title":"Chiffre d'affaire des salles",
+    "sales":"Ventes",
+    "filter":"Filtre par date",
+    "turnover":"Chiffre d'affaire",
+    "from":"Du",
+    "to":"Au"
+  }
+}

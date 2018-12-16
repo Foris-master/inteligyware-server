@@ -1,0 +1,40 @@
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-black"><i class="ion ion-cash"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text" translate>comp_hit_parade.turnover</span>
+            <span class="info-box-number">{{vm.turnover | number}} FCFA</span>
+        </div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-black"><i class="fa fa-building"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text" translate>comp_hit_parade.best_point_of_sale</span>
+            <span class="info-box-number">{{vm.best_point_of_sale.name |limitTo:30}} <br> ({{vm.best_point_of_sale.sum | number}} FCFA)</span>
+        </div>
+    </div>
+</div>
+<div class="clearfix visible-sm-block"></div>
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-black"><i class="fa fa-ticket"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text" translate>comp_hit_parade.transaction_number</span>
+            <span class="info-box-number">{{vm.transaction_number| number}}</span>
+        </div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <div class="info-box">
+        <span class="info-box-icon bg-black"><i class="fa fa-film"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text" translate>comp_hit_parade.best_seller</span>
+            <span class="info-box-number">
+                {{vm.best_users.user.full_name}}
+                <br> ({{vm.best_users_number | number}} transactions)
+                </span>
+        </div>
+    </div>
+</div>

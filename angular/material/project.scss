@@ -104,3 +104,9 @@
 .content-wrapper{
   background: #f5f5ec;
 }
+
+tags-input .tags .tag-item{
+  border: 1px solid $primary;
+  background: linear-gradient(to bottom,$primary-light 0%, $primary 47%, $primary-dark 100%);
+  color:$color_3;
+}
