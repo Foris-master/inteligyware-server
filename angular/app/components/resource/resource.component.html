@@ -1,0 +1,126 @@
+<section class="content-header">
+    <h1>{{vm.label}}
+        <small>{{vm.description}}</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> <span translate>comp_resource.home</span></a></li>
+        <li class="active"><span translate>comp_resource.list_of</span> {{vm.label}}</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-black">
+        <div class="box-header">
+            <h4 class="box-title" translate>comp_resource.number_show</h4>
+            <h4 class="box-title hide" ><span translate>comp_resource.excel </span>
+                <i ng-click="vm.upload_excel()" class="fa fa-arrow-up"></i>
+
+                <i  ng-click="vm.download_excel()" class="fa fa-arrow-down">lkj</i></h4>
+
+            <span class="box-title">
+
+
+            </span>
+            <div class="box-tools pull-right">
+                <a ui-sref="app.{{vm.editstate}}" class="btn btn-block btn-primary"><i class="fa fa-plus"></i>
+                    <span translate>comp_resource.add</span></a>
+            </div>
+            <div class="row" style="margin-top:12px">
+            <span class="col-xs-2">
+                <select class="form-control"
+                        ng-options="possibleNumber for possibleNumber in vm.possibleNumbersOfItemsToShow"
+                        ng-model="vm.numberOfItemsToShow" ng-change="vm.numberOfItemsToShowHasChanged()">
+
+                </select>
+            </span>
+                <span class="col-xs-6"></span>
+                <span class="col-xs-4" style="display: flex;">
+                <input type="text" class="form-control" placeholder="Recherche" ng-model="vm.userFilter[vm.filterCriteria]"
+                       ng-change="vm.keyPressedOnSearchBar()">
+                <select class="form-control" ng-model="vm.filterCriteria"
+                        ng-options="vm.filtersToLabelsMap[theFilter] | translate for theFilter in vm.theFilters">
+
+                </select>
+            </span>
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="fixed-table table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th
+                            ng-click="vm.orderBy(vm.allColumnsItems[$index]);vm.log.log(vm.orderByField)"
+                            ng-repeat="columnTitle in vm.columnsTitles track by $index"
+                    >
+                        <span translate >{{vm.translateroot +'.'+columnTitle}}</span>
+                        <i
+                                ng-show="vm.is_sort_asc==0 || vm.orderByField==vm.allColumnsItems[$index]"
+                                class="fa fa-sort"
+                                ng-class="{
+                                   'fa-sort': vm.is_sort_asc==0,
+                                   'fa-sort-asc': vm.is_sort_asc==1,
+                                   'fa-sort-desc': vm.is_sort_asc==2
+                                }"
+                        ></i>
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in vm.items">
+                <!-- <tr ng-repeat="item in vm.items|orderBy:vm.orderByField:vm.reverseSort">-->
+                    <td ng-repeat="columnItem in vm.columnsItems">
+                        <span ng-if="!vm.isImage(columnItem)">
+                            {{vm.objectByString(item, columnItem)}}
+                        </span>
+                        <img ng-if="vm.isImage(columnItem)"
+                             title="{{vm.objectByString(item, columnItem)}}"
+                             class="resource-column-image" ng-src="{{vm.objectByString(item, columnItem)}}"
+                             alt="">
+                    </td>
+
+                    <td>
+                        <button class="btn btn-success btn-xs glyphicon glyphicon-search"
+                                ui-sref="app.{{vm.detailstate}}({resource_id: item.id})"></button>
+                        <button class="btn btn-default btn-xs glyphicon glyphicon-pencil"
+                                ui-sref="app.{{vm.editstate}}({resource_id: item.id})"></button>
+                        <button ng-click="vm.deleteResource(item.id)"
+                                class="btn btn-danger btn-xs glyphicon glyphicon-trash"></button>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+            <!-- <table datatable="" dt-options="vm.dtOptions" dt-columns="vm.dtColumns" dt-instance="vm.dtInstance" class="table table-bordered table-striped  row-border hover"></table> -->
+        </div>
+        <div class="box-footer">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <p>
+                    <span translate>comp_resource.from</span> {{vm.items.metadata.from}} <span translate>comp_resource.to</span> {{vm.items.metadata.to}}
+                    <span translate>comp_resource.of</span> {{vm.items.metadata.total}} <span translate>comp_resource.items</span>
+                </p>
+                <span style="display: flex;">
+                <button class="btn btn-default" ng-class="{'disabled': vm.firstValueInRangeForButtons == 1}"
+                        ng-click="vm.loadPage(vm.firstValueInRangeForButtons-vm.maxNumberOfButtons)">&lt &lt</button>
+                <button class="btn btn-default" ng-class="{'disabled': vm.previousPageNumber == 0}"
+                        ng-click="vm.previousPage()">&lt</button>
+                    <button ng-repeat="i in vm.rangeForButtons | limitTo: vm.maxNumberOfButtons track by $index"
+                            class="btn btn-default" ng-class="{'btn-primary': i==vm.currentPageNumber}"
+                            ng-click="vm.loadPage(i)">{{i}}</button>
+                <select ng-if="vm.rangeForSelect.length > 0" class="form-control"
+                        ng-options="i for i in vm.rangeForSelect" ng-model="vm.pageInSelect"
+                        ng-change="vm.pageInSelectHasChanged()"></select>
+                <button class="btn btn-default" ng-class="{'disabled': vm.nextPageNumber == 0}"
+                        ng-click="vm.nextPage()">&gt</button>
+                <button class="btn btn-default"
+                        ng-class="{'disabled': vm.lastValueInRangeForButtons == vm.pages.length}"
+                        ng-click="vm.loadPage(vm.firstValueInRangeForButtons+vm.maxNumberOfButtons)">&gt &gt</button>
+
+            </span>
+            </div>
+        </div>
+    </div>
+</section>
+

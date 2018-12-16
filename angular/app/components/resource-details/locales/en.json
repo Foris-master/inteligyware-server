@@ -1,0 +1,10 @@
+{
+  "comp_resource_details" : {
+    "id":"#",
+    "detail":"Detail",
+    "home":"Home",
+    "main_info":"Main informations",
+    "foreign_field":"Related Resources",
+    "related_field":"Linked by resources"
+  }
+}

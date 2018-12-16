@@ -1,0 +1,8 @@
+{
+  "comp_nav_header" : {
+    "current_language":"Current language",
+    "created_at":"Created at",
+    "profile":"My profile",
+    "logout":"Logout"
+  }
+}

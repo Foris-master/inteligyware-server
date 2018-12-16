@@ -1,0 +1,35 @@
+{
+  "comp_nav_sidebar" : {
+    "connected" : "Connecté",
+    "home" : "ACCUEIL",
+    "search" : "Recherche",
+    "dashboard" : "TABLEAU DE BORD",
+    "state": "Etats",
+    "best_seller" : "Meilleurs vendeurs",
+    "best_movies" : "Meilleurs films",
+    "best_product" : "Meilleurs produits",
+    "best_category" : "Meilleures catégories",
+    "best_paymentmethods" : "Meilleures mode de paiement",
+    "best_customer" : "Meilleurs clients",
+    "best_movietheaters" : "Meilleurs salle de cinéma",
+    "admin" : "ADMINISTRATION",
+    "users" : "Utilisateurs",
+    "film" : "Films",
+    "shortly_film" : "Films à l'affiche",
+    "schedules" : "Programmations",
+    "movietheaters" : "Salles",
+    "others" : "Autres",
+    "statistic" : "Statistique",
+    "stat_product" : "Statistique par produit",
+    "stat_seller" : "Statistique par vendeur",
+    "participants" : "Auteur/Acteurs",
+    "paymentmethods" : "Mode de paiement",
+    "categories" : "Catégories",
+    "rules" : "Rôles",
+    "user_rules" : "Rôles des utilisateurs",
+    "permissions" : "Permissions",
+    "role_permissions" : "Permissions des Rôles",
+    "towns" : "Villes"
+
+  }
+}

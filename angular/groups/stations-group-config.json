@@ -1,0 +1,510 @@
+{
+  "folder": "stations",
+  "icon": "fa-bank",
+  "divider":"",
+  "name": "stations",
+  "trees_name": "stations",
+  "translateroot": "page_point_of_sale",
+  "perpage": "10",
+  "resources": {
+        "point_of_sales": {
+          "name": "point_of_sale",
+          "api": "point_of_sales",
+          "label": "point_of_sale",
+          "icon": "fa-cart-plus",
+          "translateroot": "page_point_of_sale",
+          "list": {
+            "description": "point_of_sale_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "picture",
+              "address_id",
+              "patner_id",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "picture",
+              "address.name",
+              "patner.name",
+              "updated_at"
+            ],
+            "images": ["picture"],
+            "orderby": "name",
+            "foreign": "patner,address"
+          },
+          "edit": {
+            "includes": "patner,address",
+            "mainconf": {
+
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "picture": {
+                "type": "image",
+                "label": "picture",
+                "model": "picture",
+                "disabled": false
+              },
+              "address_id":{
+                "type":"number",
+                "label":"service_id",
+                "model":"service_id",
+                "disabled":true
+              },
+              "patner_id":{
+                "type":"number",
+                "label":"patner_id",
+                "model":"patner_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "patner":{
+                "api":"patners",
+                "label":"patner",
+                "key":"id",
+                "model":"patner_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"logo"
+              },
+              "address":{
+                "api":"addresses",
+                "label":"address",
+                "key":"id",
+                "model":"address_id",
+                "search_field":"name",
+                "title_field":"name"
+              }
+            }
+          },
+          "detail": {
+            "state": "point_of_sale_details",
+            "includes": "address,patner,stations",
+            "images": [
+              "picutre"
+            ],
+            "foreignconf": {
+              "patner_id": {
+                "objet":"patner",
+                "state":"patner_details",
+                "label":"name"
+              },
+              "address_id": {
+                "objet":"address",
+                "state":"address_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "client_offers":{
+                "state":"client_details",
+                "label":"client_offers",
+                "pivotlabel":"id",
+                "pivotstate":"client_offer_details"
+              }
+            },
+            "relatedthroughconf":{
+              "stations": {
+                "state": "station_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "stations_tree": "stations",
+              "stations": "cells Phones",
+              "point_of_sale_tree": "Points of sale",
+              "name": "name",
+              "id": "#",
+              "picture": "front picture",
+              "address_id": "address",
+              "patner_id": "patner",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "stations_tree": "stations",
+              "stations": "Postes Telephonique",
+              "point_of_sale_tree": "vos points de vente",
+              "name": "nom",
+              "id": "#",
+              "picture": "phot du point",
+              "address": "addresse",
+              "patner": "patenaire",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "stations": {
+          "name": "station",
+          "api": "stations",
+          "label": "station",
+          "icon": "fa-mobile",
+          "translateroot": "page_station",
+          "list": {
+            "description": "station_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "bail",
+              "identifier",
+              "point_of_sale",
+              "mobile_operator",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "bail",
+              "identifier",
+              "point_of_sale.name",
+              "mobile_operator.name",
+              "updated_at"
+            ],
+            "orderby": "name",
+            "foreign": "mobile_operator,point_of_sale"
+          },
+          "edit": {
+            "includes": "point_of_sale,mobile_operator,point_of_sale_services",
+            "mainconf": {
+
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "identifier": {
+                "type": "string",
+                "label": "identifier",
+                "model": "identifier",
+                "disabled": false
+              },
+              "bail": {
+                "type": "number",
+                "label": "bail",
+                "model": "bail",
+                "disabled": false
+              },
+              "point_of_sale_id":{
+                "type":"number",
+                "label":"point_of_sale_id",
+                "model":"point_of_sale_id",
+                "disabled":true
+              },
+              "mobile_operator_id":{
+                "type":"number",
+                "label":"mobile_operator_id",
+                "model":"mobile_operator_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "point_of_sale":{
+                "api":"point_of_sales",
+                "label":"point_of_sale",
+                "key":"id",
+                "model":"point_of_sale_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"picture"
+              },
+              "mobile_operator_id":{
+                "api":"mobile_operators",
+                "label":"mobile_operator",
+                "key":"id",
+                "model":"mobile_operator_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"logo"
+              }
+            },
+            "relatedconf": {
+              "point_of_sale_services":
+              {
+                "state":"point_of_sale_service_details",
+                "objet":"point_of_sale_services",
+                "api" : "point_of_sale_services",
+                "label":"point_of_sale_services",
+                "display_key":"service.name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"service.name",
+                "pivot_api" : "point_of_sale_service_stations",
+                "pivot_model":"point_of_sale_service_id",
+                "this_pivot_model" : "station_id"
+              }
+            }
+          },
+          "detail": {
+            "state": "station_details",
+            "includes": "point_of_sale_services.service,point_of_sale,mobile_operator",
+            "foreignconf": {
+              "point_of_sale_id": {
+                "objet":"point_of_sale",
+                "state":"point_of_sale_details",
+                "label":"name"
+              },
+              "mobile_operator_id": {
+                "objet":"mobile_operator",
+                "state":"mobile_operator_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "point_of_sale_services":{
+                "state":"point_of_sale_service_details",
+                "label":"service.name",
+                "pivotlabel":"id",
+                "pivotstate":"point_of_sale_service_station_details"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "station_tree": "cells phones",
+              "station": "cell phone",
+              "name": "name",
+              "bail": "bail",
+              "id": "#",
+              "identifier": "call number",
+              "point_of_sale_id": "point of sale",
+              "point_of_sale_services": "stations's services",
+              "mobile_operator_id": "mobile operator",
+              "point_of_sale": "point of sale",
+              "mobile_operator": "mobile operator",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "station_tree": "Telephones mobiles",
+              "station": "telephone mobile",
+              "name": "nom",
+              "bail": "capital",
+              "id": "#",
+              "identifier": "numero d'appel",
+              "point_of_sale_id": "point de vente",
+              "point_of_sale_services": "services de ce poste",
+              "mobile_operator_id": "operateur mobile",
+              "point_of_sale": "point de vente",
+              "mobile_operator": "operateur mobile",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "transactions": {
+          "name": "transaction",
+          "api": "transactions",
+          "label": "transaction",
+          "icon": "fa-money",
+          "translateroot": "page_transaction",
+          "list": {
+            "description": "transaction_description",
+            "columnsheaders": [
+              "id",
+              "amount",
+              "status",
+              "user_id",
+              "offer_id",
+              "target_id",
+              "point_of_sale_service_id",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "amount",
+              "status",
+              "user.last_name",
+              "offer.name",
+              "target.name",
+              "point_of_sale_service.point_of_sale.name",
+              "updated_at"
+            ],
+            "orderby": "updated_at",
+            "foreign": "user,target,point_of_sale_service.point_of_sale,offer"
+          },
+          "edit": {
+            "includes": "user,target,point_of_sale_service,offer",
+            "mainconf": {
+
+              "amount": {
+                "type": "number",
+                "label": "amount",
+                "model": "amount",
+                "disabled": false
+              },
+              "status": {
+                "type": "select",
+                "label": "status",
+                "model": "status",
+                "disabled": false
+              },
+              "user_id":{
+                "type":"number",
+                "label":"user_id",
+                "model":"user_id",
+                "disabled":true
+              },
+              "offer_id":{
+                "type":"number",
+                "label":"offer_id",
+                "model":"offer_id",
+                "disabled":true
+              },
+              "point_of_sale_service_id":{
+                "type":"number",
+                "label":"point_of_sale_service_id",
+                "model":"point_of_sale_service_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "user":{
+                "api":"users",
+                "label":"user",
+                "key":"id",
+                "model":"user_id",
+                "search_field":"last_name",
+                "title_field":"last_name",
+                "image_field":"picture"
+              },
+              "offer":{
+                "api":"offers",
+                "label":"offer",
+                "key":"id",
+                "model":"offer_id",
+                "search_field":"name",
+                "title_field":"name"
+              },
+              "point_of_sale_service":{
+                "api":"point_of_sale_services",
+                "label":"point_of_sale_service",
+                "key":"id",
+                "model":"point_of_sale_service_id",
+                "search_field":"point_of_sale_service.service.name",
+                "title_field":"point_of_sale_service.service.name"
+              }
+            }
+          },
+          "detail": {
+            "state": "transaction_details",
+            "includes": "user,target,point_of_sale_service.service,offer",
+            "foreignconf": {
+              "user_id": {
+                "objet":"user",
+                "state":"user_details",
+                "label":"full_name"
+              },
+              "point_of_sale_service_id": {
+                "objet":"point_of_sale_service",
+                "state":"point_of_sale_service_details",
+                "label":"service.name"
+              },
+              "target_id": {
+                "objet":"target",
+                "state":"target_details",
+                "label":"name"
+              },
+              "offer_id": {
+                "objet":"offer",
+                "state":"offer_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "client_offers":{
+                "state":"client_details",
+                "label":"client_offers",
+                "pivotlabel":"id",
+                "pivotstate":"client_offer_details"
+              }
+            },
+            "relatedthroughconf":{
+              "clients": {
+                "state": "client_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "transaction_tree": "transactions",
+              "transactions": "transaction",
+              "amount": "amount",
+              "status": "status",
+              "user_id": "made by",
+              "offer_id": "offer",
+              "id": "#",
+              "service_id": "service",
+              "target_id": "target",
+              "point_of_sale_service_id": "point of sale",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "transaction_tree": "transactions",
+              "transactions": "transaction",
+              "amount": "montant",
+              "status": "statut",
+              "user_id": "effectue par",
+              "offer_id": "offre",
+              "id": "#",
+              "service_id": "service",
+              "target_id": "concerne",
+              "point_of_sale_service_id": "point de vente",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        }
+  }
+}

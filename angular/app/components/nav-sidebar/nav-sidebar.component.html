@@ -1,0 +1,192 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="{{vm.img_link}}"
+             class="img-circle" alt="{{vm.userData.user.full_name}}"
+             >
+      </div>
+      <div class="pull-left info">
+        <p>{{vm.userData.user.full_name}} </p>
+        <a href="javascript:void(0)" ><i class="fa fa-circle text-success"></i> <span translate>comp_nav_sidebar.connected</span></a>
+      </div>
+    </div>
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="{{'comp_nav_sidebar.search'|translate}}" ng-model="vm.search_menu" ng-change="vm.show_menus(vm.search_menu)">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <ul class="sidebar-menu">
+      <li class="header" style="cursor: pointer;" ui-sref='app.landing' translate ng-show="vm.menu_bool_tree.home_cumul">comp_nav_sidebar.home</li>
+
+      <li class="header hide" translate ng-show="vm.can('consult.stat')">comp_nav_sidebar.dashboard</li>
+      <li class="treeview hide" ng-show="vm.can('consult.stat')">
+        <a href="javascript:void(0)">
+          <i class="fa fa-bar-chart"></i> <span translate>comp_nav_sidebar.state</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a ui-sref='app.best_movies'>
+              <i class="fa fa-bar-chart"></i> <span translate>comp_nav_sidebar.best_movies</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref='app.best_customer'>
+              <i class="fa fa-pie-chart"></i> <span translate>comp_nav_sidebar.best_customer</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref='app.best_movietheaters'>
+              <i class="fa fa-pie-chart"></i> <span translate>comp_nav_sidebar.best_movietheaters</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref='app.best_paymentmethods'>
+              <i class="fa fa-pie-chart"></i> <span translate>comp_nav_sidebar.best_paymentmethods</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li class="header" translate ng-if="vm.hasAnyRole(['administrator','super.administrator'])">comp_nav_sidebar.admin</li>
+
+        <li class="treeview" id='stations-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-bank"></i> <span translate>page_point_of_sale.stations_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='point_of_sale_list-list' ng-show="true">
+                    <a ui-sref='app.point_of_sale_list'>
+                      <i class="fa fa-cart-plus"></i> <span translate>page_point_of_sale.point_of_sale_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='station_list-list' ng-show="true">
+                    <a ui-sref='app.station_list'>
+                      <i class="fa fa-mobile"></i> <span translate>page_station.station_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='transaction_list-list' ng-show="true">
+                    <a ui-sref='app.transaction_list'>
+                      <i class="fa fa-money"></i> <span translate>page_transaction.transaction_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview" id='services-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-cubes"></i> <span translate>page_service.services_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='service_list-list' ng-show="true">
+                    <a ui-sref='app.service_list'>
+                      <i class="fa fa-gift"></i> <span translate>page_service.service_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='offer_list-list' ng-show="true">
+                    <a ui-sref='app.offer_list'>
+                      <i class="fa fa-magic"></i> <span translate>page_offer.offer_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview" id='others-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-tags"></i> <span translate>page_address.others_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='address_list-list' ng-show="true">
+                    <a ui-sref='app.address_list'>
+                      <i class="fa fa-envelope"></i> <span translate>page_address.address_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='currency_list-list' ng-show="true">
+                    <a ui-sref='app.currency_list'>
+                      <i class="fa fa-money"></i> <span translate>page_currency.currency_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='country_list-list' ng-show="true">
+                    <a ui-sref='app.country_list'>
+                      <i class="fa fa-flag"></i> <span translate>page_country.country_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='town_list-list' ng-show="true">
+                    <a ui-sref='app.town_list'>
+                      <i class="fa fa-map-pin"></i> <span translate>page_town.town_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview" id='billings-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-credit-card"></i> <span translate>page_bill.billings_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='bill_list-list' ng-show="true">
+                    <a ui-sref='app.bill_list'>
+                      <i class="fa fa-file"></i> <span translate>page_bill.bill_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='payment_list-list' ng-show="true">
+                    <a ui-sref='app.payment_list'>
+                      <i class="fa fa-paypal"></i> <span translate>page_payment.payment_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview" id='authorizations-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-user-secret"></i> <span translate>page_patner.authorizations_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='patner_list-list' ng-show="true">
+                    <a ui-sref='app.patner_list'>
+                      <i class="fa fa-users"></i> <span translate>page_patner.patner_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='role_list-list' ng-show="true">
+                    <a ui-sref='app.role_list'>
+                      <i class="fa fa-lock"></i> <span translate>page_role.role_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='permission_list-list' ng-show="true">
+                    <a ui-sref='app.permission_list'>
+                      <i class="fa fa-eye-slash"></i> <span translate>page_permission.permission_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview" id='accounts-tree' ng-if="true">
+        <a href="javascript:void(0)">
+          <i class="fa fa-users"></i> <span translate>page_user.accounts_tree</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+		 <li class='' id='user_list-list' ng-show="true">
+                    <a ui-sref='app.user_list'>
+                      <i class="fa fa-users"></i> <span translate>page_user.user_tree</span>
+                    </a>
+                  </li>
+		 <li class='' id='client_list-list' ng-show="true">
+                    <a ui-sref='app.client_list'>
+                      <i class="fa fa-male"></i> <span translate>page_client.client_tree</span>
+                    </a>
+                  </li>
+		
+			</ul>
+		</li>
+		<li class="treeview"  ng-if="false">
+        </li>
+
+
+    </ul>
+  </section>
+</aside>

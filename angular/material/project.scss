@@ -1,0 +1,106 @@
+@import "variables";
+/* CSS général */
+
+.text-red{
+  color: $slim_red !important;
+}
+
+.text-gold{
+  color: $slim_gold !important;
+}
+
+
+.btn{
+  &.btn-primary{
+    background: $primary;
+    border-color: $primary-dark;
+    color:$color_4 !important;
+  }
+
+  &.btn-primary:hover,&.btn-primary:focus{
+    background: $slim_gold !important;
+    border-color: $slim_gold;
+    //color: $slim_black;
+  }
+
+  &.btn-success{
+    background: $slim_gold !important;
+    border-color: $slim_gold;
+    //color: $slim_black;
+  }
+
+  &.btn-default{
+    color: $primary !important;
+  }
+
+  &.btn-success:hover,&.btn-success:focus{
+    background: $slim_black !important;
+    border-color: $slim_black;
+    //color: $slim_gold;
+  }
+
+  &.btn-danger{
+    background-color: $danger;
+    border-color: $danger;
+    color:$slim_white;
+  }
+
+  &.btn-danger:hover,&.btn-danger:focus{
+    background: $slim_white !important;
+    border-color: $danger;
+    //color: $slim_red;
+  }
+
+  &.btn-warning{
+
+  }
+
+  .fa{
+    color:$color_4 !important;
+  }
+  color:$color_4 !important;
+}
+
+.box-black{
+  border-color:$slim_black;
+}
+
+.skin-blue {
+  .main-header {
+    .logo{
+      background:$slim_gold;
+      color: $slim_black;
+      &:hover{
+        background:$slim_black;
+        color: $slim_gold;
+      }
+    }
+
+    .navbar {
+      background-color: $slim_black;
+
+      .sidebar-toggle{
+        &:hover{
+          background: $slim_gold;
+          color: $slim_black;
+        }
+      }
+    }
+  }
+
+  .main-sidebar{
+    background-color: $slim_black;
+  }
+
+  .sidebar-menu {
+    li{
+      &.header{
+        color: $slim_gold;
+      }
+    }
+  }
+}
+
+.content-wrapper{
+  background: #f5f5ec;
+}

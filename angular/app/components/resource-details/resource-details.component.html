@@ -1,0 +1,139 @@
+<div id="ressources-detail">
+    <section class="content-header">
+        <h1>
+            <span translate>{{vm.translateroot+'.'+vm.name}}</span>
+            <small></small>
+            <div class="btn btn-success" ui-sref="{{vm.editstate}}"><i class="fa fa-plus"></i></div>
+            <div class="btn btn-success" ui-sref="{{vm.editstate}}({resource_id: vm.details.id})"><i class="fa fa-edit"></i></div>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> <span translate>comp_resource_details.home</span></a></li>
+            <li><a ui-sref="{{vm.liststate}}" translate>{{vm.translateroot+'.'+vm.name}}</a></li>
+            <li class="active" translate>comp_resource_details.detail</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div  class="box box-dark">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" translate>comp_resource_details.main_info</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-hover table-condensed">
+                            <tbody>
+                            <tr ng-repeat="item in vm.main">
+                                <th translate >{{vm.translateroot +'.'+item.name}}</th>
+                                <td ng-if="!item.isImage">
+                                   {{item.value}}
+                                    <span ng-if="item.isForeign">
+                                        (<a ui-sref="app.{{item.foreign.state}}({resource_id: item.foreign.objet.id})">
+                                            {{item.foreign.objet[item.foreign.label]}}
+                                        </a>
+                                        )
+                                    </span>
+                                </td>
+                                <td ng-if="item.isImage">
+                                    <img class="img-responsive" ng-src="{{item.value}}">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="box box-dark">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" translate>comp_resource_details.foreign_field</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-hover table-condensed">
+                            <tbody>
+                            <tr ng-repeat="item in vm.related_data">
+                                <th class="col-lg-3 col-md-3 col-sm-3">
+                                    <span translate >{{vm.translateroot +'.'+item.name}}</span> ({{item.values.length}})
+                                </th>
+
+                                <td ng-if="!item.isImage">
+                                    <span class="row" ng-repeat=" r in item.values" >
+                                        <a ui-sref="app.{{item.conf.state}}({resource_id: r.id})">
+                                            {{item.conf.label_pre}}  {{vm._.get(r,item.conf.label)}} {{item.conf.label_suf}}
+                                        </a>
+                                    </span>
+                                </td>
+                                <td ng-if="item.isImage">
+                                    <img class="img-responsive" ng-src="{{item.value}}">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer text-center">
+
+                    </div>
+                </div>
+                <div class="box box-dark">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" translate>comp_resource_details.related_field</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-hover table-condensed">
+                            <tbody>
+                            <tr ng-repeat="item in vm.relatedthrough_data">
+                                <th class="col-lg-3 col-md-3 col-sm-3">
+                                    <span translate >{{vm.translateroot +'.'+item.name}}</span> ({{item.values.length}})
+                                </th>
+
+                                <td ng-if="!item.isImage">
+                                    <span class="row" ng-repeat=" r in item.values" >
+                                        <li>
+                                           {{item.conf.label_pre}}
+                                            <a ui-sref="app.{{item.conf.state}}({resource_id: r.id})">
+                                             {{vm._.get(r,item.conf.label)}}
+                                            </a> {{item.conf.label_suf}}
+                                            |
+                                            <a ui-sref="app.{{item.conf.pivotstate}}({resource_id: r.pivot.id})">
+                                                {{r.pivot[item.conf.pivotlabel]}}
+                                            </a>
+
+                                        </li>
+                                    </span>
+                                </td>
+                                <td ng-if="item.isImage">
+                                    <img class="img-responsive" ng-src="{{item.value}}">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="box-footer text-center">
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+    </section>
+
+</div>

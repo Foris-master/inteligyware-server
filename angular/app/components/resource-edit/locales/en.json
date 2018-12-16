@@ -1,0 +1,26 @@
+{
+  "comp_resource_edit" : {
+    "position_will_change":"Change of position",
+    "save":"Save",
+    "cancel":"Cancel",
+    "ok":"OK",
+    "detail":"Detail",
+    "from":"Old coordinates",
+    "to":"New coordinates",
+    "new":"New",
+    "home":"Home",
+    "create":"Create",
+    "edit":"Form",
+    "image_placeholder_paste":"Click here and paste",
+    "image_placeholder_drop":"Drop your image here or click to select",
+    "pdf_placeholder":"Drop your PDF here or click to select",
+    "no_file_drop":"Drag / drop not supported",
+    "no_error":"No error but the field is not filled",
+    "main_info":"Main informations",
+    "foreign_field":"Related Resources",
+    "related_field":"Linked by resources",
+    "depot":"Depot",
+    "latitude":"Latitude",
+    "longitude":"Longitude"
+  }
+}

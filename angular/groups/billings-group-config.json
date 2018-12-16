@@ -1,0 +1,278 @@
+{
+  "folder": "billings",
+  "icon": "fa-credit-card",
+  "divider":"",
+  "name": "billings",
+  "trees_name": "billings",
+  "translateroot": "page_bill",
+  "perpage": "10",
+  "resources": {
+        "bills": {
+          "name": "bill",
+          "api": "bills",
+          "label": "bill",
+          "icon": "fa-file",
+          "translateroot": "page_bill",
+          "list": {
+            "description": "bill_description",
+            "columnsheaders": [
+              "id",
+              "amount",
+              "status",
+              "concern_id",
+              "concer_type",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "amount",
+              "status",
+              "concern.name",
+              "concer_type",
+              "updated_at"
+            ],
+            "orderby": "updated_at",
+            "foreign": "concern"
+          },
+          "edit": {
+            "includes": "concern",
+            "mainconf": {
+              "amount": {
+                "type": "integer",
+                "label": "amount",
+                "model": "amount",
+                "disabled": true
+              },
+              "status": {
+                "type": "select",
+                "label": "status",
+                "model": "status",
+                "disabled": true
+              },
+              "concern_type": {
+                "type": "select",
+                "label": "concern_type",
+                "model": "concern_type",
+                "disabled": false
+              },
+              "concern_id": {
+                "type": "integer",
+                "label": "concern_id",
+                "model": "concern_id",
+                "disabled": false
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "morphconf": {
+              "concern": {
+                "model":"concern"
+              }
+            }
+          },
+          "detail": {
+            "state": "bill_details",
+            "includes": "concern,payments",
+            "pdf": [
+              "pdf"
+            ],
+            "morphconf": {
+              "concern": {
+                "model":"concern"
+              }
+            },
+            "relatedconfthrough": {
+              "payments": {
+                "state": "payment_details",
+                "label": "amount"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "billings_tree": "billings",
+              "bill_tree": "bills",
+              "amount": "amount",
+              "id": "#",
+              "status": "status",
+              "concern_id": "concern",
+              "concern_type": "concern type",
+              "concern": "concern",
+              "payments": "payments",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "billings_tree": "facturations",
+              "bill_tree": "factures",
+              "amount": "montant",
+              "id": "#",
+              "status": "statut",
+              "concern_id": "concerne",
+              "concern_type": "type concerne",
+              "concern": "concerne",
+              "payments": "paiements",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+        },
+        "payments": {
+          "name": "payment",
+          "api": "payments",
+          "label": "payment",
+          "icon": "fa-paypal",
+          "translateroot": "page_payment",
+          "list": {
+            "description": "payment_description",
+            "columnsheaders": [
+              "id",
+              "amount",
+              "amount_paid",
+              "reference",
+              "proof",
+              "payment_date",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "amount",
+              "amount_paid",
+              "reference",
+              "proof",
+              "payment_date",
+              "updated_at"
+            ],
+            "orderby": "updated_at",
+            "images": ["proof"],
+            "foreign": ""
+          },
+          "edit": {
+            "includes": "clients,service",
+            "mainconf": {
+              "amount": {
+                "type": "number",
+                "label": "amount",
+                "model": "amount",
+                "disabled": false
+              },
+              "amount_paid": {
+                "type": "number",
+                "label": "amount_paid",
+                "model": "amount_paid",
+                "disabled": false
+              },
+              "reference": {
+                "type": "string",
+                "label": "reference",
+                "model": "reference",
+                "disabled": false
+              },
+              "proof": {
+                "type": "image",
+                "label": "proof",
+                "model": "proof",
+                "disabled": false
+              },
+              "payment_date": {
+                "type": "date",
+                "label": "payment_date",
+                "model": "payment_date",
+                "disabled": false
+              },
+              "pdf": {
+                "type": "pdf",
+                "label": "pdf",
+                "model": "pdf",
+                "disabled": false
+              },
+              "bill_id":{
+                "type":"number",
+                "label":"bill_id",
+                "model":"bill_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "bill":{
+                "api":"bill",
+                "label":"bill_id",
+                "key":"id",
+                "model":"bill_id",
+                "search_field":"amount",
+                "title_field":"amount"
+              }
+            }
+          },
+          "detail": {
+            "state": "bill_details",
+            "includes": "bill,currency",
+            "foreignconf": {
+              "bill_id": {
+                "objet":"bill",
+                "state":"bill_details",
+                "label":"amount"
+              },
+              "currency_id": {
+                "objet":"currency",
+                "state":"currency_details",
+                "label":"code"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "payment_tree": "payments",
+              "payment": "payments",
+              "amount": "amount",
+              "amount_paid": "amount paid",
+              "reference": "reference",
+              "proof": "proof",
+              "id": "#",
+              "payment_date": "payment date",
+              "bill_id": "bill",
+              "currency_id": "currency",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "payment_tree": "paiements",
+              "payment": "paiements",
+              "amount": "montant",
+              "amount_paid": "montant paye",
+              "reference": "no de bordereau",
+              "proof": "preuve de paiement",
+              "id": "#",
+              "payment_date": "date de payment",
+              "bill_id": "facture",
+              "currency_id": "monnaie",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        }
+  }
+}

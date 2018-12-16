@@ -1,0 +1,26 @@
+@import "../../../material/variables";
+.skin-blue {
+  .main-header {
+    li{
+      &.user-header{
+        background: #000000;
+      }
+
+      &.user-footer{
+        background: #4d4d4d !important;
+      }
+    }
+
+    .languages{
+      cursor: pointer;
+    }
+
+    .languages:hover{
+      color: $slim_text_color;
+    }
+  }
+}
+
+.navbar-nav > .tasks-menu > .dropdown-menu > li .menu > li > a{
+  padding: 0px 10px;
+}

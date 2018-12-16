@@ -69,6 +69,14 @@ class User extends Authenticatable implements JWTSubject
         return self::$Status;
     }
 
+    public function getPictureAttribute($val)
+    {
+        if($val==null){
+            $val='default/img/user_picture.jpg';
+        }
+        return env('APP_URL').$val;
+    }
+
     /**
      * Automatically creates hash for the user password.
      *
@@ -126,7 +134,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function partner(){
+    public function patner(){
         return $this->belongsTo(Patner::class);
     }
 

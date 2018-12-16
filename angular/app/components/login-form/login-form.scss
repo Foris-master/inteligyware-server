@@ -1,0 +1,20 @@
+@import "../../../material/variables";
+.btn-github:hover {
+    color: #fff
+}
+
+.btn-facebook:hover {
+    color: #fff
+}
+
+.btn-google:hover {
+    color: #fff
+}
+
+a{
+    color:#000;
+    &:hover{
+        color: $slim_text_color;
+    }
+}
+

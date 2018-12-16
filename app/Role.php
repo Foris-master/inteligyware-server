@@ -21,6 +21,6 @@ class Role extends LaratrustRole
 
     public  function users(){
         return $this->belongsToMany(User::class)
-            ->withPivot('id','user_id','role_id');
+            ->withPivot('user_id','role_id');
     }
 }

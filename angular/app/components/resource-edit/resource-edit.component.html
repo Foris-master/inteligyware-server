@@ -1,0 +1,411 @@
+<script type="text/ng-template" id="mapPositionModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title" translate>comp_resource_edit.position_will_change</h3>
+    </div>
+    <div class="modal-body">
+        <small translate>comp_resource_edit.from</small>
+        <ul>
+            <li ><span translate>comp_resource_edit.latitude</span> : {{mvm.pos.old.lat}}</li>
+            <li ><span translate>comp_resource_edit.longitude</span> : {{mvm.pos.old.lng}} </li>
+        </ul>
+        <small translate>comp_resource_edit.to</small>
+        <ul>
+            <li ><span translate>comp_resource_edit.latitude</span> : {{mvm.pos.new.lat}}</li>
+            <li ><span translate>comp_resource_edit.longitude</span> : {{mvm.pos.new.lng}} </li>
+        </ul>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" ng-click="mvm.ok()" translate>comp_resource_edit.ok</button>
+        <button class="btn btn-primary" type="button" ng-click="mvm.cancel()" translate>comp_resource_edit.cancel</button>
+    </div>
+</script>
+<section class="content-header">
+    <h1>
+        <span translate>{{vm.translateroot+'.'+vm.name}}</span>
+        <small>:</small>
+        <a ui-sref="{{vm.addstate}}({resource_id: null})" translate>comp_resource_edit.new</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> <span translate>comp_resource_edit.home</span></a></li>
+        <li><a ui-sref="{{vm.liststate}}" translate>{{vm.translateroot+'.'+vm.name}}</a></li>
+        <li ng-hide="vm.is_create"><a ui-sref="{{vm.detailstate}}({resource_id: vm.resource.id})"><span translate>{{vm.translateroot+'.'+vm.name}}</span> <span translate>comp_resource_edit.detail</span></a></li>
+        <li class="active" translate>comp_resource_edit.edit</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-horizontal" ng-submit="vm.save()">
+            <div class="box box-black">
+                <div class="box-header with-border">
+                    <h3 class="box-title" translate>comp_resource_edit.main_info</h3>
+                </div>
+                <div class="box-body">
+
+                    <div  ng-repeat="(field_name, field_conf)  in vm.mainconf"
+                          ng-class="{
+                          'has-error' : vm.errors[field_conf.model],
+                          'has-success' :
+                          vm.errors && vm.errors[field_conf.model] == undefined
+                          && vm.resource[field_conf.model]!= undefined ,
+                          'has-warning' : vm.errors && vm.errors[field_conf.model] == undefined
+                          && vm.resource[field_conf.model]== undefined
+                          }">
+                        <label for="{{field_name}}">
+                            <i ng-if="vm.errors[field_conf.model]" class="fa fa-times-circle-o"></i>
+                            <i ng-if="vm.errors && vm.errors[field_conf.model] == undefined
+                            && vm.resource[field_conf.model]!= undefined"
+                               class="fa  fa-check"></i>
+                            <i ng-if="vm.errors && vm.errors[field_conf.model] == undefined
+                            && vm.resource[field_conf.model] == undefined"
+                               class="fa  fa-bell-o"></i>
+                            <span translate>{{vm.translateroot+'.'+field_conf.label}}</span>
+                        </label>
+
+                        <div class="input-group" ng-if="field_conf.type=='string'" >
+                            <input type="{{field_conf.type}}" class="form-control" id="{{field_name}}"
+                                   ng-model="vm.resource[field_conf.model]"
+                                   ng-disabled="field_conf.disabled"
+                                   
+                                   placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}">
+                            <span class="input-group-addon"><i class="fa  fa-tag"></i></span>
+
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='number'" >
+                            <input type="{{field_conf.type}}" class="form-control" id="{{field_name}}"
+                                   ng-model="vm.resource[field_conf.model]"
+                                   ng-disabled="field_conf.disabled"
+                                   
+                                   placeholder="{{vm.translateroot+'.'+field_conf.label | translate}}"
+                                   step="{{field_conf.step || 'any'}}"
+                            >
+                            <span class="input-group-addon"><i class="fa   fa-list-ol"></i></span>
+
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='email'" >
+                            <input type="{{field_conf.type}}" class="form-control" id="{{field_name}}"
+                                   ng-model="vm.resource[field_conf.model]"
+                                   ng-disabled="field_conf.disabled"
+                                   
+                                   placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+
+                        </div>
+                        <div class="input-group" ng-if="field_conf.type=='select'" >
+                            <select class="form-control"
+                                    id="{{field_name}}"
+                                    
+                                    ng-model="vm.resource[field_conf.model]"
+                                    ng-options="option[field_conf.opt_value] as option[field_conf.opt_label] for option in field_conf.options"
+                                    ng-disabled="field_conf.disabled"
+                            >
+                                <option value="" disabled selected>{{field_conf.placeholder}}</option>
+                            </select>
+                            <span class="input-group-addon"><i class="fa fa-list"></i></span>
+
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='text'" >
+                            <textarea class="form-control" id="{{field_name}}"
+                                      ng-model="vm.resource[field_conf.model]"
+                                      ng-disabled="field_conf.disabled"
+                                      placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}"
+                                      
+                                      rows="{{field_conf.rows || 2}}" ></textarea>
+
+                            <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
+
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='checkbox'" >
+
+                                <span class="input-group-addon">
+                                          <input type="{{field_conf.type}}"  id="{{field_name}}"
+                                               ng-model="vm.resource[field_conf.model]"
+                                                 ng-true-value="1"
+                                                 ng-false-value="0"
+                                               ng-disabled="field_conf.disabled"
+                                                 
+                                               placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}">
+                                </span>
+                            <!--<input type="text" ng-disabled="true" class="form-control">-->
+                            <span class="form-control">
+                                {{vm.resource[field_conf.model] ? 'yes' : 'no'}}
+                            </span>
+                            <span class="input-group-addon">
+                                <i class="fa fa-adjust"></i>
+                            </span>
+
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='time'"
+                             moment-picker="vm.resource[field_conf.model]" format="HH:mm:ss" >
+
+                                                    <input class="form-control"
+                                                           ng-model="vm.resource[field_conf.model]"
+                                                           ng-disabled="field_conf.disabled"
+                                                           placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}"
+                                                           
+                                                           ng-model-options="{ updateOn: 'blur' }">
+                            <span class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </span>
+                        </div>
+
+                        <div class="input-group" ng-if="field_conf.type=='date'" moment-picker="vm.resource[field_conf.model]"
+                                                    format="YYYY-MM-DD HH:mm:ss">
+
+                                                    <input class="form-control"
+                                                           ng-model="vm.resource[field_conf.model]"
+                                                           ng-disabled="field_conf.disabled"
+                                                           placeholder="{{vm.translateroot+'.'+field_conf.label|translate}}"
+                                                           
+                                                           ng-model-options="{ updateOn: 'blur' }">
+                            <span class="input-group-addon">
+                                <i class="fa  fa-calendar"></i>
+                            </span>
+                        </div>
+
+                        <div ng-if="field_conf.type=='coordonate'" class="input-group  input-coordante" >
+                            <input type="number" class="form-control"
+                                   ng-model="vm.resource[field_conf.latitude_field]"
+                                   ng-disabled="field_conf.disabled && !vm.is_create"
+                                   placeholder="{{field_conf.latitude_field}}"
+                                   
+                                   step="{{field_conf.step || 'any'}}"
+                            >
+                            <input id="{{field_name}}" type="number" class="form-control"
+                                   ng-model="vm.resource[field_conf.longitude_field]"
+                                   ng-disabled="field_conf.disabled && !vm.is_create"
+                                   placeholder="{{field_conf.longitude_field}}"
+                                   
+                                   step="{{field_conf.step || 'any'}}"
+                            >
+
+                            <div ng-if="vm.resource_loaded">
+
+                                <div map-lazy-load="{{vm.lazyLoadUrl}}"
+                                     map-lazy-load-params="{{vm.lazyLoadParams}}"
+
+                                >
+                                    <ng-map on-click="vm.pinClicked(event,field_conf.latitude_field,field_conf.longitude_field,vm)"
+                                            center="[{{vm.resource[field_conf.latitude_field] ||4.043412 }},
+                                         {{vm.resource[field_conf.longitude_field] || 9.742196 }}]"   zoom="{{vm.mapZoom}}">
+                                        <marker
+                                                position="[{{vm.resource[field_conf.latitude_field]}},{{vm.resource[field_conf.longitude_field]}}]">
+
+                                        </marker>
+                                    </ng-map>
+                                </div>
+                            </div>
+                            <span class="input-group-addon"><i class="fa  fa-map-marker"></i></span>
+
+                        </div>
+                        <div ng-if="field_conf.type=='image'" class="input-group  " ng-init="croppedDataUrl=''" >
+                            <div
+                                 ng-class="{
+                                    'img_input_disabled' : field_conf.disabled
+                                 }"
+                                 ngf-drop
+                                 ngf-select
+                                 ng-model="croppedDataUrl"
+                                 class="drop-box form-control"
+                                 ng-disabled="field_conf.disabled"
+                                 ngf-enable-firefox-paste="true"
+                                 ng-init="vm.resource[field_conf.model]=''"
+                                 ngf-drag-over-class="'dragover'"
+                                 ngf-multiple="false"
+                                 ngf-resize="{width: 100, height: 100, quality: .8, type: 'image/jpeg',
+               ratio: '1:2', centerCrop: true, pattern='.jpg', restoreExif: false}"
+                                 ngf-allow-dir="false"
+                                 accept="image/*"
+                                 ngf-pattern="'image/*'">
+
+                                <span class="paste-zone" ng-click="vm.onChildrenClicked($event)">
+                                    <i class="fa  fa-clipboard"></i> <span translate class="hide">comp_resource_edit.image_placeholder_paste</span>
+                                </span>
+                                |
+                                <span translate>comp_resource_edit.image_placeholder_paste
+
+                                </span>
+
+                            </div>
+                            <ui-cropper ng-if="croppedDataUrl" class="crop-box"
+                                      image="croppedDataUrl  | ngfDataUrl"
+                                      result-image="vm.resource[field_conf.model]"
+                                      area-type="rectangle"
+                                      result-image-size="field_conf.size"
+                            >
+                            </ui-cropper>
+                            <div ng-if="vm.resource[field_conf.model]"
+                                 class="drop-box img-display-box"
+                                 ng-class="{
+                                    'img_input_disabled' : field_conf.disabled
+                                 }"
+                            >
+                                <img ng-src="{{vm.resource[field_conf.model]}}" />
+                            </div>
+                            <div ngf-no-file-drop translate>comp_resource_edit.no_file_drop</div>
+
+                            <span class="input-group-addon"><i class="fa  fa-file-image-o"></i></span>
+
+                        </div>
+                        <div ng-if="field_conf.type=='pdf'" class="input-group  "  >
+                            <div
+                                 ng-class="{
+                                    'img_input_disabled' : field_conf.disabled
+                                 }"
+                                 ngf-drop
+                                 ngf-select
+                                 ng-model="vm.resource[field_conf.model]"
+                                 ngf-change="vm.trustSrc(vm.resource[field_conf.model],field_conf.model)"
+                                 class="drop-box form-control"
+                                 ng-disabled="field_conf.disabled"
+                                 ngf-enable-firefox-paste="true"
+                                 ngf-drag-over-class="'dragover'"
+                                 ngf-multiple="false"
+                                 ngf-allow-dir="false"
+                                 ngf-accept="'application/pdf'"
+                                 ngf-max-size="5MB"
+                                 ngf-pattern="'.pdf'">
+                                <span translate>comp_resource_edit.pdf_placeholder
+                                </span>
+
+                            </div>
+
+                            <div ng-if="vm.resource[field_conf.model]"
+                                 class="drop-box img-display-box"
+                                 ng-class="{
+                                    'img_input_disabled' : field_conf.disabled
+                                 }"
+                            >
+
+                                <embed ng-src="{{vm.resource[field_conf.model]}}"
+                                       width="100%" height="500" type='application/pdf'/>
+                            </div>
+                            <div ngf-no-file-drop translate>comp_resource_edit.no_file_drop</div>
+
+                            <span class="input-group-addon"><i class="fa  fa-file-pdf-o"></i></span>
+
+                        </div>
+
+                        <span class="help-block" ng-repeat="er in vm.errors[field_conf.model]">{{er}}</span>
+                        <span class="help-block" ng-if="vm.errors && vm.errors[field_conf.model] == undefined
+                            && vm.resource[field_conf.model] == undefined" translate>comp_resource_edit.no_error
+                            </span>
+
+                        <br>
+                    </div>
+
+                </div>
+                <div class="box-footer">
+
+                    <button type="button" ng-click="vm.cancel()" class="btn btn-primary" translate>comp_resource_edit.cancel</button>
+                    <button type="submit" class="btn btn-success pull-right" translate>{{vm.translateroot+'.'+vm.action_label}}</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-black">
+                <div class="box-header with-border">
+                    <h3 class="box-title" translate>comp_resource_edit.foreign_field</h3>
+                </div>
+                <form class="form-horizontal">
+                    <div class="box-body">
+
+                        <div ng-repeat="(field_name, field_conf)  in vm.foreignconf" ng-class="{
+                          'has-error' : vm.errors[field_conf.model],
+                          'has-success' : vm.errors && vm.errors[field_conf.model] == undefined
+                          }">
+                            <label for="{{field_name}}">
+                                <i ng-if="vm.errors[field_conf.model]" class="fa fa-times-circle-o"></i>
+                                <i ng-if="vm.errors && vm.errors[field_conf.model] == undefined" class="fa  fa-check"></i>
+                                <span translate>{{vm.translateroot+'.'+field_conf.label}}</span>
+                            </label>
+
+                            <div class="input-group foreign-zone " >
+                                <div class="form-control input-foreign" angucomplete-alt id="{{field_name}}"
+                                     selected-object="vm.selecteObject"
+                                     selected-object-data="field_conf"
+                                     disable-input="field_conf.disabled"
+                                     initial-value="field_conf.objet"
+                                     
+                                     title-field="{{ field_conf.title_field || 'name'}}"
+                                     description-field="{{ field_conf.description_field || 'description'}}"
+
+                                     image-field="{{ field_conf.image_field || 'logo'}}"
+                                     minlength="1"
+                                     remote-api-handler="vm.foreign_handler"
+
+                                     input-class="form-control form-control-small"
+                                     match-class="highlight">
+                                </div>
+                                <span class="input-group-addon"><i class="fa   fa-code-fork"></i></span>
+
+                            </div>
+                            <span class="help-block" ng-repeat="er in vm.errors[field_conf.model]">{{er}}</span>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="box box-black">
+                <div class="box-header with-border">
+                    <h3 class="box-title" translate>comp_resource_edit.related_field</h3>
+                </div>
+                <form class="form-horizontal">
+                    <div class="box-body">
+
+                        <div ng-repeat="(field_name, field_conf)  in vm.relatedconf">
+                            <label for="{{field_name}}" translate>{{vm.translateroot+'.'+field_conf.label}}</label>
+
+                            <div class="input-group related-zone " ng-style="{'z-index': 1000 - $index}" >
+                                <tags-input
+                                        id="{{vm.translateroot+'.'+field_conf.label}}"
+                                        class="form-control input-foreign"
+                                        ng-model="vm.related_data[field_name]"
+                                        add-from-autocomplete-only="true"
+                                        placeholder="add {{field_name}}"
+                                        ng-disabled="field_conf.disabled"
+                                        key-property="{{field_conf.key}}"
+                                        min-length="1"
+                                        display-property="{{field_conf.display_key}}"
+                                        on-tag-removed="vm.refreshRelated($tag,0,field_name,field_conf.display_key)"
+                                        on-tag-added="vm.refreshRelated($tag,1,field_name,field_conf.display_key)"
+                                >
+                                    <auto-complete
+                                            display-property="{{field_conf.display_key}}"
+                                            min-length="1"
+                                            add-from-autocomplete-only="true"
+                                            source="vm.loadLoadRelated($query,field_conf)"
+                                    ></auto-complete>
+
+                                </tags-input>
+
+                                <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+
+                            </div>
+
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="box-footer" >
+                        <button
+                                class="btn btn-primary"
+                                ng-click="vm.cancelSync()" translate>comp_resource_edit.cancel</button>
+                        <button ng-if="!vm.is_create"  ng-click="vm.syncRelated()"
+                                class="btn btn-success pull-right">Sync</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,461 @@
+{
+  "folder": "others",
+  "icon": "fa-tags",
+  "divider":"",
+  "name": "others",
+  "trees_name": "others",
+  "translateroot": "page_address",
+  "perpage": "10",
+  "resources": {
+        "addresses": {
+          "name": "address",
+          "api": "addresses",
+          "label": "address",
+          "icon": "fa-envelope",
+          "translateroot": "page_address",
+          "list": {
+            "description": "address_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "town_id",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "town.name",
+              "updated_at"
+            ],
+            "orderby": "name",
+            "foreign": "town"
+          },
+          "edit": {
+            "includes": "town",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "town_id": {
+                "type": "interger",
+                "label": "town_id",
+                "model": "town_id",
+                "disabled": true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "town": {
+                "api":"towns",
+                "label":"town",
+                "key":"id",
+                "model":"town_id",
+                "search_field":"name",
+                "title_field":"name"
+              }
+            }
+          },
+          "detail": {
+            "state": "address_details",
+            "includes": "town,point_of_sales,users",
+
+            "foreignconf": {
+              "town_id": {
+                "objet":"town",
+                "state":"town_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "point_of_sales": {
+                "state": "point_of_sale_details",
+                "label": "name"
+              },
+              "users": {
+                "state": "user_details",
+                "label": "full_name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "others_tree": "others",
+              "address_tree": "addresses",
+              "name": "name",
+              "id": "#",
+              "town_id": "town",
+              "users": "users",
+              "point_of_sales": "point of sales",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "others_tree": "Autres",
+              "address_tree": "addresses",
+              "name": "nom",
+              "id": "#",
+              "town_id": "ville",
+              "users": "utilisateurs",
+              "point_of_sales": "point de ventes",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+        },
+        "currencies": {
+          "name": "currency",
+          "api": "currencies",
+          "label": "currency",
+          "icon": "fa-money",
+          "translateroot": "page_currency",
+          "list": {
+            "description": "currency_description",
+            "columnsheaders": [
+              "id",
+              "code",
+              "symbol",
+              "rate",
+              "description",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "code",
+              "symbol",
+              "rate",
+              "description",
+              "updated_at"
+            ],
+            "orderby": "code",
+            "foreign": ""
+          },
+          "edit": {
+            "includes": "",
+            "mainconf": {
+              "code": {
+                "type": "string",
+                "label": "code",
+                "model": "code",
+                "disabled": false
+              },
+              "symbol": {
+                "type": "string",
+                "label": "symbol",
+                "model": "symbol",
+                "disabled": false
+              },
+              "rate": {
+                "type": "integer",
+                "label": "rate",
+                "model": "rate",
+                "disabled": true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            }
+          },
+          "detail": {
+            "state": "currency_details",
+            "includes": "",
+
+            "foreignconf": {
+
+            },
+            "relatedconf": {
+
+            }
+          },
+          "locales": {
+            "en": {
+              "currency_tree": "currencies",
+              "code": "code",
+              "id": "#",
+              "symbol": "symbol",
+              "rate": "rate",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "currency_tree": "monnaies",
+              "code": "code",
+              "id": "#",
+              "symbol": "symbole",
+              "rate": "taux de change",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+        },
+        "countries": {
+          "name": "country",
+          "api": "countries",
+          "label": "country",
+          "icon": "fa-flag",
+          "translateroot": "page_country",
+          "list": {
+            "description": "country_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "currency_code",
+              "currency_symbol",
+              "capital",
+              "flag",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "currency_code",
+              "currency_symbol",
+              "capital",
+              "flag",
+              "updated_at"
+            ],
+            "orderby": "name",
+            "images": ["flag"],
+            "foreign": ""
+          },
+          "edit": {
+            "includes": "",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": true
+              },
+              "capital": {
+                "type": "string",
+                "label": "capital",
+                "model": "capital",
+                "disabled": true
+              },
+              "currency_code": {
+                "type": "string",
+                "label": "currency_code",
+                "model": "currency_code",
+                "disabled": true
+              },
+              "currency_symbol": {
+                "type": "string",
+                "label": "currency_symbol",
+                "model": "currency_symbol",
+                "disabled": true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "service":{
+                "api":"services",
+                "label":"service",
+                "key":"id",
+                "model":"service_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"logo"
+              }
+            }
+            },
+          "detail": {
+            "state": "country_details",
+            "includes": "",
+            "foreignconf": {
+
+            },
+            "relatedthroughconf":{
+              "towns": {
+                "state": "town_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "country_tree": "country",
+              "name": "name",
+              "currency_code": "currency code",
+              "currency_symbol": "currency symbol",
+              "id": "#",
+              "capital": "capital",
+              "flag": "flag",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "country_tree": "pays",
+              "name": "nom",
+              "currency_code": "code de la monaie",
+              "currency_symbol": "symbole de la monaie",
+              "id": "#",
+              "capital": "capitale",
+              "flag": "drapeau",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "towns": {
+          "name": "town",
+          "api": "towns",
+          "label": "town",
+          "icon": "fa-map-pin",
+          "translateroot": "page_town",
+          "list": {
+            "description": "town_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "district",
+              "code",
+              "country_id",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "district",
+              "code",
+              "country.name",
+              "updated_at"
+            ],
+            "orderby": "name",
+            "foreign": "country"
+          },
+          "edit": {
+            "includes": "country",
+            "mainconf": {
+              "code": {
+                "type": "string",
+                "label": "code",
+                "model": "code",
+                "disabled": false
+              },
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "district": {
+                "type": "string",
+                "label": "district",
+                "model": "district",
+                "disabled": false
+              },
+              "country_id":{
+                "type":"number",
+                "label":"country_id",
+                "model":"country_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "country":{
+                "api":"countries",
+                "label":"country_id",
+                "key":"id",
+                "model":"country_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"flag"
+              }
+            }
+          },
+          "detail": {
+            "state": "town_details",
+            "includes": "country,addresses",
+            "foreignconf": {
+              "country_id": {
+                "objet":"country",
+                "state":"country_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+            },
+            "relatedthroughconf":{
+              "addresses": {
+                "state": "address_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "town_tree": "towns",
+              "town": "town",
+              "name": "name",
+              "id": "#",
+              "district": "district",
+              "country_id": "country",
+              "code": "code",
+              "addresses": "addresses",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "town_tree": "villes",
+              "town": "ville",
+              "name": "nom",
+              "id": "#",
+              "district": "region",
+              "country_id": "pays",
+              "code": "code",
+              "addresses": "addresses",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        }
+  }
+}

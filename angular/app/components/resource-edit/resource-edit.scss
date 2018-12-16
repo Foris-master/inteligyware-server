@@ -1,0 +1,106 @@
+@import "../../../material/variables";
+.input-coordante{
+  height: 368px;
+}
+
+.input-foreign{
+  padding: 0;
+  border: none;
+}
+
+.box-black {
+  overflow: auto;
+  padding: 5px;
+}
+
+.foreign-zone .angucomplete-dropdown {
+  margin-top: 35px;
+}
+
+.related-zone .host {
+  margin: 0;
+}
+.related-zone .form-control {
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+.related-zone .tags {
+  border:none;
+  box-shadow: none;
+}
+
+.related-zone tags-input  .tags .tag-item {
+  background: $slim_black;
+  border-radius: 0;
+  color: $slim_gold;
+  border: none;
+}
+
+.related-zone .form-control{
+  height: auto;
+}
+
+.highlight {
+  color : $slim_gold;
+}
+
+.has-success .input-group-addon {
+  border-color : green;
+}
+
+.has-success label {
+  color: green;
+}
+
+.has-error .input-group-addon {
+  border-color : #a94442;
+}
+
+.has-error label {
+  color: #a94442;
+}
+
+.has-warning .input-group-addon {
+  border-color : #f39c12;
+}
+
+.has-warning label {
+  color: #f39c12;
+}
+
+.drop-box {
+  background: #F8F8F8;
+  border: 2px dashed $slim_black;
+  height: 65px;
+  text-align: center;
+}
+.img_input_disabled {
+
+  border: 2px dashed lightgrey;
+
+}
+.dragover {
+  border: 5px dashed $slim_gold;
+}
+
+.crop-box{
+  height: 200px !important;
+  border: 1px dotted;
+}
+
+.img-display-box{
+  text-align: center;
+  height: auto;
+  padding: 5px;
+}
+
+.paste-zone{
+  cursor: pointer;
+  font-weight:bold;
+}
+
+.angucomplete-dropdown {
+
+  overflow-y: auto;
+  max-height: 400px; // your preference
+}

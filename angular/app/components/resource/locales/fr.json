@@ -1,0 +1,13 @@
+{
+  "comp_resource" : {
+    "add":"Ajouter",
+    "excel":"Excel",
+    "list_of":"Liste de",
+    "home":"Accueil",
+    "number_show":"Nombre à afficher",
+    "from":"De",
+    "to":"à",
+    "of":"sur",
+    "items":"élément(s)"
+  }
+}

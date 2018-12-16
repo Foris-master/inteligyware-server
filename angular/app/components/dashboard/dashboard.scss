@@ -1,0 +1,44 @@
+@import "../../../material/variables";
+
+.info-box{
+  //background: #debc6e;
+}
+
+.ion,
+.fa{
+  color:$color_1;
+}
+
+#loading-bar .bar{
+  background:$color_2;
+}
+
+#loading-bar-spinner .spinner-icon{
+  border-top-color: $color_4;
+  border-left-color: $color_4;
+}
+
+tags-input .tags .tag-item{
+  border: 1px solid #acacac;
+  background: linear-gradient(to bottom, $color_4 0%, $color_1 47%, $color_1 100%);
+  color:$color_3;
+}
+
+._720kb-datepicker-calendar-days-header{
+  background: $color_1;
+  div{
+    color:$color_4;
+  }
+}
+
+._720kb-datepicker-calendar-header:nth-child(2n+1){
+ background: $color_2;
+}
+
+._720kb-datepicker-calendar-month span{
+  color : $color_3;
+}
+._720kb-datepicker-calendar-day:hover, ._720kb-datepicker-calendar-day._720kb-datepicker-active{
+  background: $color_3;
+  color:$color_2;
+}

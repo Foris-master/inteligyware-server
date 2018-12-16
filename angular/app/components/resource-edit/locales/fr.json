@@ -1,0 +1,26 @@
+{
+  "comp_resource_edit" : {
+    "position_will_change":"Changement de la position",
+    "save":"Enregistrer",
+    "cancel":"Annuler",
+    "ok":"OK",
+    "detail":"Détail",
+    "from":"Ancienne coordonnées",
+    "to":"Nouvelle coordonnées",
+    "new":"Nouveau",
+    "home":"Accueil",
+    "create":"Enregistrer",
+    "edit":"Formulaire",
+    "image_placeholder_paste":"Cliquez ici et coller",
+    "image_placeholder_drop":"Déposez votre image ici ou cliquez pour sélectionner",
+    "pdf_placeholder":"Déposez votre PDF ici ou cliquez pour sélectionner",
+    "no_file_drop":"Drag/drop non supporté",
+    "no_error":"Pas d'erreur mais le champ n'est pas rempli",
+    "main_info":"Informations principales",
+    "foreign_field":"Ressources connexes",
+    "related_field":"Relié par des ressources",
+    "name":"Nom",
+    "latitude":"Latitude",
+    "longitude":"Longitude"
+  }
+}

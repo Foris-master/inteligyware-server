@@ -1,0 +1,400 @@
+{
+  "folder": "accounts",
+  "icon": "fa-users",
+  "divider":"",
+  "name": "accounts",
+  "trees_name": "accounts",
+  "translateroot": "page_user",
+  "perpage": "10",
+  "resources": {
+        "users": {
+          "name": "user",
+          "api": "users",
+          "label": "users",
+          "icon": "fa-users",
+          "translateroot": "page_user",
+          "list": {
+            "description": "user_description",
+            "columnsheaders": [
+              "id",
+              "patner_id",
+              "email",
+              "phone_number",
+              "first_name",
+              "last_name",
+              "cni",
+              "picture",
+              "status",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "patner.name",
+              "email",
+              "phone_number",
+              "first_name",
+              "last_name",
+              "cni",
+              "picture",
+              "status",
+              "updated_at"
+            ],
+            "orderby": "email",
+            "foreign": "patner",
+            "images": ["picture"]
+          },
+          "edit": {
+            "includes": "patner",
+            "mainconf": {
+              "picture": {
+                "type": "image",
+                "label": "picture",
+                "model": "picture",
+                "disabled": false
+              },
+              "is_active": {
+                "type": "checkbox",
+                "label": "is_active",
+                "model": "is_active",
+                "disabled": false
+              },
+              "email": {
+                "type": "email",
+                "label": "email",
+                "model": "email",
+                "disabled": false
+              },
+              "phone_number": {
+                "type": "string",
+                "label": "phone_number",
+                "model": "phone_number",
+                "disabled": false
+              },
+              "first_name": {
+                "type": "string",
+                "label": "first_name",
+                "model": "first_name",
+                "disabled": false
+              },
+              "last_name": {
+                "type": "string",
+                "label": "last_name",
+                "model": "last_name",
+                "disabled": false
+              },
+              "cni": {
+                "type": "string",
+                "label": "cni",
+                "model": "cni",
+                "disabled": false
+              },
+              "patner_id":{
+                "type":"number",
+                "label":"patner_id",
+                "model":"patner_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "patner":{
+                "api":"patners",
+                "label":"patner",
+                "key":"id",
+                "model":"patner_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"logo"
+              }
+            },
+            "relatedconf": {
+              "subscriptions":
+              {
+                "state":"subscription_details",
+                "objet":"subscriptions",
+                "api" : "subscriptions",
+                "label":"subscriptions",
+                "display_key":"name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"name",
+                "pivot_api" : "user_subscriptions",
+                "pivot_model":"subscription_id",
+                "this_pivot_model" : "user_id"
+              }
+            }
+          },
+          "detail": {
+            "state": "user_details",
+            "includes": "patner,address,roles,permissions",
+            "images": ["picture"],
+            "foreignconf": {
+              "address_id": {
+                "objet":"address",
+                "state":"address_details",
+                "label":"name"
+              },
+              "patner_id": {
+                "objet":"patner",
+                "state":"patner_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "subscriptions":{
+                "state":"subscription_details",
+                "label":"user_subscriptions",
+                "pivotlabel":"id",
+                "pivotstate":"user_subscription_details"
+              },
+              "roles":{
+                "state":"role_details",
+                "label":"display_name",
+                "pivotlabel":"id",
+                "pivotstate":"role_user_details"
+              },
+              "permissions":{
+                "state":"permission_details",
+                "label":"display_name",
+                "pivotlabel":"id",
+                "pivotstate":"permission_user_details"
+              }
+            },
+            "relatedthroughconf":{
+              "user_subscriptions": {
+                "state": "user_subscription_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "accounts_tree": "accounts",
+              "user_tree": "users",
+              "user": "users",
+              "patner_id": "patner",
+              "email": "email",
+              "phone_number": "phone number",
+              "first_name": "first name",
+              "last_name": "last name",
+              "full_name": "full name",
+              "cni": "national id card number",
+              "picture": "picture",
+              "status": "status",
+              "id": "#",
+              "is_active": "is account active ?",
+              "address_id": "address",
+              "last_device_id": "last device",
+              "last_login": "last login",
+              "roles": "roles",
+              "permissions": "permissions",
+              "settings": "settings",
+              "patner": "patner",
+              "address": "address",
+              "subscriptions": "subscriptions",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "accounts_tree": "comptes",
+              "user_tree": "utilisateurs",
+              "user": "utilisateurs",
+              "patner_id": "patenaire",
+              "email": "email",
+              "phone_number": "numero de telephone",
+              "first_name": "prenom",
+              "last_name": "nom",
+              "full_name": "nom complet",
+              "cni": "numero de carte d'identite",
+              "picture": "photo",
+              "status": "status",
+              "id": "#",
+              "is_active": "compte actif ?",
+              "address_id": "addresse",
+              "last_device_id": "dernier appariel",
+              "last_login": "dernier connection",
+              "roles": "roles",
+              "permissions": "permissions",
+              "settings": "configurations",
+              "patner": "patenaire",
+              "address": "addresse",
+              "subscriptions": "subscriptions",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "clients": {
+          "name": "client",
+          "api": "clients",
+          "label": "client",
+          "icon": "fa-male",
+          "translateroot": "page_client",
+          "list": {
+            "description": "client_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "email",
+              "phone_number",
+              "patner",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "email",
+              "phone_number",
+              "patner.name",
+              "updated_at"
+            ],
+            "orderby": "name",
+            "foreign": "patner"
+          },
+          "edit": {
+            "includes": "offers,patner",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "phone_number": {
+                "type": "string",
+                "label": "phone_number",
+                "model": "phone_number",
+                "disabled": false
+              },
+              "email": {
+                "type": "email",
+                "label": "email",
+                "model": "email",
+                "disabled": false
+              },
+              "type": {
+                "type": "select",
+                "label": "type",
+                "model": "type",
+                "disabled": false
+              },
+              "patner_id":{
+                "type":"number",
+                "label":"patner_id",
+                "model":"patner_id",
+                "disabled":true
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "patner":{
+                "api":"patners",
+                "label":"patner",
+                "key":"id",
+                "model":"patner_id",
+                "search_field":"name",
+                "title_field":"name",
+                "image_field":"logo"
+              }
+            },
+            "relatedconf": {
+              "offers":
+              {
+                "state":"offer_details",
+                "objet":"offers",
+                "api" : "offers",
+                "label":"offers",
+                "display_key":"name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"name",
+                "pivot_api" : "client_offers",
+                "pivot_model":"offer_id",
+                "this_pivot_model" : "client_id"
+              }
+            }
+          },
+          "detail": {
+            "state": "client_details",
+            "includes": "offers,patner,client_offers",
+            "foreignconf": {
+              "patner_id": {
+                "objet":"patner",
+                "state":"patner_details",
+                "label":"name"
+              }
+            },
+            "relatedconf": {
+              "client_offers":{
+                "state":"offer_details",
+                "label":"client_offers",
+                "pivotlabel":"id",
+                "pivotstate":"client_offer_details"
+              }
+            },
+            "relatedthroughconf":{
+              "offers": {
+                "state": "offer_details",
+                "label": "name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "client_tree": "clients",
+              "client": "clients",
+              "name": "name",
+              "email": "email",
+              "phone_number": "phone number",
+              "patner_id": "patner",
+              "type": "type of client",
+              "id": "#",
+              "patner": "patner",
+              "offers": "offers",
+              "client_offers": "client's offers",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "client_tree": "clients",
+              "client": "clients",
+              "name": "nom",
+              "email": "email",
+              "phone_number": "numero de telephone",
+              "patner_id": "patenaire",
+              "type": "statut du client",
+              "id": "#",
+              "patner": "patenaire",
+              "offers": "offres",
+              "client_offers": "offres du client",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        }
+  }
+}

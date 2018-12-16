@@ -1,0 +1,293 @@
+{
+  "folder": "services",
+  "icon": "fa-cubes",
+  "divider": "",
+  "name": "services",
+  "trees_name": "services",
+  "translateroot": "page_service",
+  "perpage": "10",
+  "resources": {
+    "service": {
+      "name": "service",
+      "api": "services",
+      "label": "service",
+      "icon": "fa-gift",
+      "translateroot": "page_service",
+      "list": {
+        "description": "service_description",
+        "columnsheaders": [
+          "id",
+          "logo",
+          "code",
+          "name",
+          "description",
+          "updated_at"
+        ],
+        "columnsitems": [
+          "id",
+          "logo",
+          "code",
+          "name",
+          "description",
+          "updated_at"
+        ],
+        "orderby": "name",
+        "foreign": "",
+        "images": [
+          "logo"
+        ]
+      },
+      "edit": {
+        "includes": "stations",
+        "mainconf": {
+          "code": {
+            "type": "string",
+            "label": "code",
+            "model": "code",
+            "disabled": false
+          },
+          "name": {
+            "type": "string",
+            "label": "name",
+            "model": "name",
+            "disabled": false
+          },
+          "description": {
+            "type": "text",
+            "label": "description",
+            "model": "description",
+            "disabled": false
+          },
+          "logo": {
+            "type": "image",
+            "label": "logo",
+            "model": "logo",
+            "size": {
+              "w": 200,
+              "h": 100
+            }
+          },
+          "created_at": {
+            "type": "date",
+            "label": "created_at",
+            "model": "created_at",
+            "disabled": true
+          },
+          "updated_at": {
+            "type": "date",
+            "label": "updated_at",
+            "model": "updated_at",
+            "disabled": true
+          }
+        },
+        "foreignconf": {
+        },
+        "relatedconf": {
+          "stations": {
+            "state": "station_details",
+            "objet": "stations",
+            "api": "stations",
+            "label": "stations",
+            "display_key": "name",
+            "model": "id",
+            "key": "id",
+            "searched_key": "name",
+            "pivot_api": "service_stations",
+            "pivot_model": "station_id",
+            "this_pivot_model": "service_id"
+          }
+        }
+      },
+      "detail": {
+        "state": "service_details",
+        "includes": "offers,point_of_sales",
+        "images": [
+          "logo"
+        ],
+        "foreignconf": {
+        },
+
+        "relatedconf": {
+          "offers": {
+            "state": "offer_details",
+            "label": "name"
+          },
+          "point_of_sales": {
+            "state": "point_of_sale_details",
+            "label": "name"
+          }
+        }
+      },
+      "locales": {
+        "en": {
+          "services_tree": "services",
+          "service_tree": "services",
+          "service": "service",
+          "offers": "offers",
+          "point_of_sales": "point of sales",
+          "name": "name",
+          "id": "#",
+          "logo": "logo",
+          "code": "code",
+          "description": "description",
+          "updated_at": "updated at",
+          "created_at": "created at"
+        },
+        "fr": {
+          "services_tree": "les services",
+          "service_tree": "les services",
+          "service": "service",
+          "offers": "offres",
+          "point_of_sales": "point de ventes",
+          "name": "nom",
+          "id": "#",
+          "logo": "logo",
+          "code": "code",
+          "description": "description",
+          "updated_at": "modifie le",
+          "created_at": "cree at"
+        }
+      }
+    },
+    "offer": {
+      "name": "offer",
+      "api": "offers",
+      "label": "offer",
+      "icon": "fa-magic",
+      "translateroot": "page_offer",
+      "list": {
+        "description": "offer_description",
+        "columnsheaders": [
+          "id",
+          "name",
+          "amount",
+          "service",
+          "updated_at"
+        ],
+        "columnsitems": [
+          "id",
+          "name",
+          "amount",
+          "service.name",
+          "description",
+          "updated_at"
+        ],
+        "orderby": "name",
+        "foreign": "service"
+      },
+      "edit": {
+        "includes": "clients,service",
+        "mainconf": {
+          "code": {
+            "type": "string",
+            "label": "code",
+            "model": "code",
+            "disabled": false
+          },
+          "name": {
+            "type": "string",
+            "label": "name",
+            "model": "name",
+            "disabled": false
+          },
+          "amount": {
+            "type": "number",
+            "label": "amount",
+            "model": "amount",
+            "disabled": false
+          },
+          "service_id": {
+            "type": "number",
+            "label": "service_id",
+            "model": "service_id",
+            "disabled": true
+          },
+          "created_at": {
+            "type": "date",
+            "label": "created_at",
+            "model": "created_at",
+            "disabled": true
+          },
+          "updated_at": {
+            "type": "date",
+            "label": "updated_at",
+            "model": "updated_at",
+            "disabled": true
+          }
+        },
+        "foreignconf": {
+          "service": {
+            "api": "services",
+            "label": "service",
+            "key": "id",
+            "model": "service_id",
+            "search_field": "name",
+            "title_field": "name",
+            "image_field": "logo"
+          }
+        },
+        "relatedconf": {
+          "clients": {
+            "state": "client_details",
+            "objet": "clients",
+            "api": "clients",
+            "label": "clients",
+            "display_key": "name",
+            "model": "id",
+            "key": "id",
+            "searched_key": "name",
+            "pivot_api": "client_offers",
+            "pivot_model": "client_id",
+            "this_pivot_model": "offer_id"
+          }
+        }
+      },
+      "detail": {
+        "state": "offer_details",
+        "includes": "clients,service,client_offers",
+        "foreignconf": {
+          "service_id": {
+            "objet": "service",
+            "state": "service_details",
+            "label": "name"
+          }
+        },
+        "relatedconf": {
+          "clients": {
+            "state": "client_details",
+            "label": "name"
+          }
+
+        }
+      },
+      "locales": {
+        "en": {
+          "offer_tree": "offers",
+          "offer": "offers",
+          "clients": "clients",
+          "name": "name",
+          "id": "#",
+          "service_id": "service",
+          "service": "service",
+          "code": "code",
+          "amount": "amount",
+          "updated_at": "updated at",
+          "created_at": "created at"
+        },
+        "fr": {
+          "offer_tree": "offres",
+          "offer": "offres",
+          "clients": "clients",
+          "name": "nom",
+          "id": "#",
+          "service_id": "service",
+          "service": "service",
+          "code": "code",
+          "amount": "montant",
+          "updated_at": "modifie le",
+          "created_at": "cree le"
+        }
+      }
+    }
+  }
+}

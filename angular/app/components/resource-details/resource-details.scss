@@ -1,0 +1,45 @@
+@import "../../../material/variables";
+#ressources-detail{
+  .table > tbody > tr > th,
+  .table > tfoot > tr > th,
+  .table > thead > tr > td,
+  .table > tbody > tr > td,
+  .table > tfoot > tr > td {
+    border-top: 1px solid $slim_gold;
+  }
+
+  .table-condensed > tbody > tr > th{
+    background-color: $slim_black;
+    color:$slim_gold;
+  }
+
+  a{
+    text-decoration: underline;
+    color: $slim_gold;
+  }
+}
+
+.box-dark{
+  border-top-color: $slim_black;
+}
+
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  border-top: 1px solid $slim_gold;
+}
+
+.table-condensed > tbody > tr > th{
+  background-color: $slim_black;
+  color:$slim_gold;
+}
+
+.btn{
+  &.btn-primary{
+    background: $slim_black;
+    border-color: $slim_black;
+    color:$color_4 !important;
+  }
+}

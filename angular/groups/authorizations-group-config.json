@@ -1,0 +1,452 @@
+{
+  "folder": "authorizations",
+  "icon": "fa-user-secret",
+  "divider":"",
+  "name": "authorizations",
+  "trees_name": "authorizations",
+  "translateroot": "page_patner",
+  "perpage": "10",
+  "resources": {
+
+        "patner": {
+          "name": "patner",
+          "api": "patners",
+          "label": "patner",
+          "icon": "fa-users",
+          "translateroot": "page_patner",
+          "list": {
+            "description": "patner_description",
+            "columnsheaders": [
+              "id",
+              "logo",
+              "name",
+              "email",
+              "phone_number",
+              "address_id",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "logo",
+              "name",
+              "email",
+              "phone_number",
+              "address.name",
+              "updated_at"
+            ],
+            "images": ["logo"],
+            "orderby": "name",
+            "foreign": "address"
+          },
+          "edit": {
+            "includes": "clients,service",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "email": {
+                "type": "email",
+                "label": "email",
+                "model": "email",
+                "disabled": false
+              },
+              "phone_number": {
+                "type": "string",
+                "label": "phone_number",
+                "model": "phone_number",
+                "disabled": false
+              },
+              "address_id": {
+                "type": "number",
+                "label": "address_id",
+                "model": "address_id",
+                "disabled": true
+              },
+              "is_active":{
+                "type":"checkbox",
+                "label":"is_active",
+                "model":"is_active",
+                "disabled":false
+              },
+              "status":{
+                "type":"select",
+                "label":"status",
+                "model":"status",
+                "disabled":false
+              },
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+            "foreignconf": {
+              "address":{
+                "api":"addresses",
+                "label":"address",
+                "key":"id",
+                "model":"address_id",
+                "search_field":"name",
+                "title_field":"name"
+              }
+            }
+          },
+          "detail": {
+            "state": "patner_details",
+            "images": ["logo"],
+            "includes": "point_of_sales,address,users,clients",
+            "foreignconf": {
+              "address_id": {
+                "objet":"address",
+                "state":"address_details",
+                "label":"name"
+              }
+            },
+            "relatedthroughconf":{
+              "point_of_sales": {
+                "state": "point_of_sale_details",
+                "label": "name"
+              },
+              "clients": {
+                "state": "user_details",
+                "label": "name"
+              },
+              "users": {
+                "state": "user_details",
+                "label": "full_name"
+              }
+            }
+          },
+          "locales": {
+            "en": {
+              "authorizations_tree": "authorizations",
+              "patner_tree": "patners",
+              "name": "name",
+              "id": "#",
+              "email": "email",
+              "logo": "logo",
+              "phone_number": "phone number",
+              "address_id": "address",
+              "is_active": "is active ?",
+              "status": "status",
+              "address": "address",
+              "clients": "clients",
+              "point_of_sales": "point of sales",
+              "users": "users",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "authorizations_tree": "authorisations",
+              "patner_tree": "patnaires",
+              "name": "nom",
+              "id": "#",
+              "email": "email",
+              "logo": "logo",
+              "phone_number": "numero de telephone",
+              "address_id": "addresse",
+              "is_active": "est active ?",
+              "status": "statut",
+              "address": "addresse",
+              "clients": "clients",
+              "point_of_sales": "point de ventes",
+              "users": "utilisateurs",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "roles": {
+          "name": "role",
+          "api": "roles",
+          "label": "role",
+          "icon": "fa-lock",
+          "translateroot": "page_role",
+          "list": {
+            "description": "role_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "display_name",
+              "description",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "display_name",
+              "description",
+              "updated_at"
+            ],
+            "orderby": "name"
+          },
+          "edit": {
+            "includes": "users,permissions",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "display_name": {
+                "type": "string",
+                "label": "display_name",
+                "model": "display_name",
+                "disabled": false
+              },
+              "description": {
+                "type": "text",
+                "label": "description",
+                "model": "description",
+                "disabled": false
+              },
+
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+
+            "relatedconf": {
+              "users":
+              {
+                "state":"user_details",
+                "objet":"users",
+                "api" : "users",
+                "label":"users",
+                "display_key":"last_name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"last_name",
+                "pivot_api" : "role_users",
+                "pivot_model":"user_id",
+                "this_pivot_model" : "role_id"
+              },
+              "permissions":
+              {
+                "state":"permission_details",
+                "objet":"permissions",
+                "api" : "permissions",
+                "label":"permissions",
+                "display_key":"display_name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"display_name",
+                "pivot_api" : "permission_roles",
+                "pivot_model":"permission_id",
+                "this_pivot_model" : "role_id"
+              }
+            }
+          },
+          "detail": {
+            "state": "role_details",
+            "includes": "users,permissions",
+
+            "relatedconf": {
+              "users":{
+                "state":"user_details",
+                "label":"full_name",
+                "pivotlabel":"id",
+                "pivotstate":"role_user_details"
+              },
+              "permissions":{
+                "state":"permission_details",
+                "label":"display_name",
+                "pivotlabel":"id",
+                "pivotstate":"role_permission_details"
+              }
+            },
+            "relatedthroughconf":{
+
+            }
+          },
+          "locales": {
+            "en": {
+              "role_tree": "roles",
+              "role": "roles",
+              "name": "code",
+              "display_name": "name",
+              "id": "#",
+              "description": "description",
+              "users": "users",
+              "permissions": "permissions",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "role_tree": "roles",
+              "role": "roles",
+              "name": "code",
+              "display_name": "nom",
+              "id": "#",
+              "description": "description",
+              "users": "utilisateurs",
+              "permissions": "permissions",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        },
+        "permissions": {
+          "name": "permission",
+          "api": "permissions",
+          "label": "permission",
+          "icon": "fa-eye-slash",
+          "translateroot": "page_permission",
+          "list": {
+            "description": "role_description",
+            "columnsheaders": [
+              "id",
+              "name",
+              "display_name",
+              "description",
+              "updated_at"
+            ],
+            "columnsitems": [
+              "id",
+              "name",
+              "display_name",
+              "description",
+              "updated_at"
+            ],
+            "orderby": "name"
+          },
+          "edit": {
+            "includes": "users,roles",
+            "mainconf": {
+              "name": {
+                "type": "string",
+                "label": "name",
+                "model": "name",
+                "disabled": false
+              },
+              "display_name": {
+                "type": "string",
+                "label": "display_name",
+                "model": "display_name",
+                "disabled": false
+              },
+              "description": {
+                "type": "text",
+                "label": "description",
+                "model": "description",
+                "disabled": false
+              },
+
+              "created_at": {
+                "type": "date",
+                "label": "created_at",
+                "model": "created_at",
+                "disabled": true
+              },
+              "updated_at": {
+                "type": "date",
+                "label": "updated_at",
+                "model": "updated_at",
+                "disabled": true
+              }
+            },
+
+            "relatedconf": {
+              "users":
+              {
+                "state":"user_details",
+                "objet":"users",
+                "api" : "users",
+                "label":"users",
+                "display_key":"last_name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"last_name",
+                "pivot_api" : "role_users",
+                "pivot_model":"user_id",
+                "this_pivot_model" : "role_id"
+              },
+              "roles":
+              {
+                "state":"role_details",
+                "objet":"roles",
+                "api" : "roles",
+                "label":"roles",
+                "display_key":"display_name",
+                "model":"id",
+                "key":"id",
+                "searched_key":"display_name",
+                "pivot_api" : "permission_roles",
+                "pivot_model":"role_id",
+                "this_pivot_model" : "permission_id"
+              }
+            }
+          },
+          "detail": {
+            "state": "permission_details",
+            "includes": "users,roles",
+
+            "relatedconf": {
+              "users":{
+                "state":"user_details",
+                "label":"full_name",
+                "pivotlabel":"id",
+                "pivotstate":"permission_user_details"
+              },
+              "roles":{
+                "state":"role_details",
+                "label":"display_name",
+                "pivotlabel":"id",
+                "pivotstate":"role_permission_details"
+              }
+            },
+            "relatedthroughconf":{
+
+            }
+          },
+          "locales": {
+            "en": {
+              "permission_tree": "permissions",
+              "permission": "permissions",
+              "name": "code",
+              "display_name": "name",
+              "id": "#",
+              "description": "description",
+              "users": "users",
+              "roles": "roles",
+              "updated_at": "updated at",
+              "created_at": "created at"
+            },
+            "fr": {
+              "permission_tree": "permissions",
+              "permission": "permissions",
+              "name": "code",
+              "id": "#",
+              "description": "description",
+              "users": "utilisateurs",
+              "roles": "roles",
+              "updated_at": "modifie le",
+              "created_at": "cree le"
+            }
+          }
+
+        }
+  }
+}

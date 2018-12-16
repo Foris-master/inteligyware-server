@@ -1,0 +1,8 @@
+{
+  "comp_nav_header" : {
+    "current_language":"Langue actuelle",
+    "created_at":"Compte créé le",
+    "profile":"Mon profil",
+    "logout":"Déconnexion"
+  }
+}
